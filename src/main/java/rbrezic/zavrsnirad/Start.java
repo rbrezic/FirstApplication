@@ -5,13 +5,16 @@
  */
 package rbrezic.zavrsnirad;
 
+import rbrezic.zavrsnirad.utility.HibernateUtil;
+
+
 /**
  *
  * @author Korisnik
  */
 public class Start {
     public static void main(String[] args) {
-        
+        HibernateUtil.getSessionFactory().openSession();
     }
     
 }
