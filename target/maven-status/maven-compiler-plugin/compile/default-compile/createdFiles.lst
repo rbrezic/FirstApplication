@@ -1,3 +1,7 @@
+rbrezic\zavrsnirad\model\Entitet.class
+rbrezic\zavrsnirad\model\Lokacija.class
 rbrezic\zavrsnirad\utility\HibernateUtil.class
 rbrezic\zavrsnirad\model\Vlasnik.class
+rbrezic\zavrsnirad\model\Nekretnina.class
+rbrezic\zavrsnirad\model\Vrsta.class
 rbrezic\zavrsnirad\Start.class

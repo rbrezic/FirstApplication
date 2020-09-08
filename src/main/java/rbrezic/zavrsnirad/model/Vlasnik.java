@@ -9,15 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Korisnik
  */
 @Entity
-@Table(name="vlasnik")
-public class Vlasnik {
+public class Vlasnik extends Entitet {
    
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY) 
