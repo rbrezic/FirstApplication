@@ -5,6 +5,7 @@
  */
 package rbrezic.zavrsnirad.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -15,10 +16,13 @@ import javax.persistence.Entity;
 public class Lokacija extends Entitet {
     
     private String zupanija;
-    private String naziv_mjesta;
-    private String postanski_broj;
+    @Column(name = "naziv_mjesta")
+    private String nazivMjesta;
+    @Column(name = "postanski_broj")
+    private String postanskiBroj;
     private String ulica;
-    private String broj_kuce;
+    @Column(name = "broj_kuce")
+    private String brojKuce;
 
     public String getZupanija() {
         return zupanija;
@@ -28,20 +32,20 @@ public class Lokacija extends Entitet {
         this.zupanija = zupanija;
     }
 
-    public String getNaziv_mjesta() {
-        return naziv_mjesta;
+    public String getNazivMjesta() {
+        return nazivMjesta;
     }
 
-    public void setNaziv_mjesta(String naziv_mjesta) {
-        this.naziv_mjesta = naziv_mjesta;
+    public void setNazivMjesta(String nazivMjesta) {
+        this.nazivMjesta = nazivMjesta;
     }
 
-    public String getPostanski_broj() {
-        return postanski_broj;
+    public String getPostanskiBroj() {
+        return postanskiBroj;
     }
 
-    public void setPostanski_broj(String postanski_broj) {
-        this.postanski_broj = postanski_broj;
+    public void setPostanskiBroj(String postanskiBroj) {
+        this.postanskiBroj = postanskiBroj;
     }
 
     public String getUlica() {
@@ -52,12 +56,14 @@ public class Lokacija extends Entitet {
         this.ulica = ulica;
     }
 
-    public String getBroj_kuce() {
-        return broj_kuce;
+    public String getBrojKuce() {
+        return brojKuce;
     }
 
-    public void setBroj_kuce(String broj_kuce) {
-        this.broj_kuce = broj_kuce;
+    public void setBrojKuce(String brojKuce) {
+        this.brojKuce = brojKuce;
     }
+
+
     
 }

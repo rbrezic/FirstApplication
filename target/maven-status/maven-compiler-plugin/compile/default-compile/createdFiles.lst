@@ -1,7 +1,13 @@
-rbrezic\zavrsnirad\model\Entitet.class
 rbrezic\zavrsnirad\model\Lokacija.class
 rbrezic\zavrsnirad\utility\HibernateUtil.class
-rbrezic\zavrsnirad\model\Vlasnik.class
-rbrezic\zavrsnirad\model\Nekretnina.class
+rbrezic\zavrsnirad\controller\ObradaLokacija.class
 rbrezic\zavrsnirad\model\Vrsta.class
+rbrezic\zavrsnirad\model\Entitet.class
+rbrezic\zavrsnirad\utility\Oib.class
+rbrezic\zavrsnirad\model\Vlasnik.class
+rbrezic\zavrsnirad\controller\ObradaVlasnik.class
+rbrezic\zavrsnirad\utility\AgencijaException.class
+rbrezic\zavrsnirad\model\Nekretnina.class
+rbrezic\zavrsnirad\utility\PocetniInsert.class
 rbrezic\zavrsnirad\Start.class
+rbrezic\zavrsnirad\controller\Obrada.class

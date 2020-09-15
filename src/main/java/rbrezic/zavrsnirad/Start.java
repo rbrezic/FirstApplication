@@ -6,7 +6,7 @@
 package rbrezic.zavrsnirad;
 
 import rbrezic.zavrsnirad.utility.HibernateUtil;
-
+import rbrezic.zavrsnirad.utility.PocetniInsert;
 
 /**
  *
@@ -14,7 +14,9 @@ import rbrezic.zavrsnirad.utility.HibernateUtil;
  */
 public class Start {
     public static void main(String[] args) {
+        HibernateUtil.getSessionFactory().openSession();
         
+        PocetniInsert.izvedi();
     }
     
 }

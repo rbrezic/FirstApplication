@@ -7,6 +7,7 @@ package rbrezic.zavrsnirad.model;
 
 import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -19,6 +20,13 @@ public class Nekretnina extends Entitet {
     private Boolean legalizacija;
     private BigDecimal kvadratura;
     private String opis;
+
+    @ManyToOne
+    private Lokacija lokacija;
+    @ManyToOne
+    private Vrsta vrsta;
+    @ManyToOne
+    private Vlasnik vlasnik;
 
     public String getNaziv() {
         return naziv;
@@ -51,11 +59,37 @@ public class Nekretnina extends Entitet {
     public void setOpis(String opis) {
         this.opis = opis;
     }
-   
-   
+
+    public Lokacija getLokacija() {
+        return lokacija;
+    }
+
+    public void setLokacija(Lokacija lokacija) {
+        this.lokacija = lokacija;
+    }
+
+    public Vrsta getVrsta() {
+        return vrsta;
+    }
+
+    public void setVrsta(Vrsta vrsta) {
+        this.vrsta = vrsta;
+    }
+
+    public Vlasnik getVlasnik() {
+        return vlasnik;
+    }
+
+    public void setVlasnik(Vlasnik vlasnik) {
+        this.vlasnik = vlasnik;
+    }
+
+    
+    }
+    
     
 
     
     
     
-}
+
