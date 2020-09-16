@@ -7,7 +7,10 @@ package rbrezic.zavrsnirad.utility;
 
 import java.math.BigDecimal;
 import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
+import rbrezic.zavrsnirad.controller.ObradaOperater;
 import rbrezic.zavrsnirad.model.Nekretnina;
+import rbrezic.zavrsnirad.model.Operater;
 
 /**
  *
@@ -16,12 +19,25 @@ import rbrezic.zavrsnirad.model.Nekretnina;
 public class PocetniInsert {
     public static void izvedi(){
     Session session = HibernateUtil.getSessionFactory().openSession();
+        
+        
+        Operater operater = new Operater();
+        operater.setIme("Rafael");
+        operater.setPrezime("Brezić");
+        operater.setUloga("oper");
+        operater.setEmail("brezicrafael10@gmail.com");
+        operater.setOib(Oib.getOibIiCentrala());
+        operater.setLozinka(BCrypt.hashpw("r", BCrypt.gensalt()));
+        
+        ObradaOperater oo = new ObradaOperater();
+        oo.setEntitet(operater);
+        try {
+            oo.create();
+        } catch (AgencijaException ex) {
+            ex.printStackTrace();
+        }
     
-    Nekretnina villa = new Nekretnina();
-    villa.setNaziv("Villa");
-    villa.setLegalizacija(Boolean.TRUE);
-    villa.setKvadratura(new BigDecimal(200.00));
-    
+         session.beginTransaction();
     
     
     

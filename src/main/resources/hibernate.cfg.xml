@@ -44,6 +44,8 @@
         
         
         <!-- Ovdje navodimo naše mapirane klase -->
+        <mapping class="rbrezic.zavrsnirad.model.Osoba" />
+         <mapping class="rbrezic.zavrsnirad.model.Operater" />
          <mapping class="rbrezic.zavrsnirad.model.Lokacija" />
          <mapping class="rbrezic.zavrsnirad.model.Nekretnina" />
          <mapping class="rbrezic.zavrsnirad.model.Vlasnik" />

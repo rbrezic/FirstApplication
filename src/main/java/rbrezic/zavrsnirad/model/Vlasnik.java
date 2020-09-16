@@ -15,34 +15,11 @@ import javax.persistence.Id;
  * @author Korisnik
  */
 @Entity
-public class Vlasnik extends Entitet {
+public class Vlasnik extends Osoba {
    
     
-    
-    
-    private String ime;
-    private String prezime;
     private String kontakt;
-    private String oib;
-    private String spol;
-
-
-    public String getIme() {
-        return ime;
-    }
-
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
-
-    public String getPrezime() {
-        return prezime;
-    }
-
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
-
+    
     public String getKontakt() {
         return kontakt;
     }
@@ -50,24 +27,5 @@ public class Vlasnik extends Entitet {
     public void setKontakt(String kontakt) {
         this.kontakt = kontakt;
     }
-
-    public String getOib() {
-        return oib;
-    }
-
-    public void setOib(String oib) {
-        this.oib = oib;
-    }
-
-    public String getSpol() {
-        return spol;
-    }
-
-    public void setSpol(String spol) {
-        this.spol = spol;
-    }
-    
-   
-    
-    
+ 
 }

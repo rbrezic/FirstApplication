@@ -5,8 +5,9 @@
  */
 package rbrezic.zavrsnirad;
 
-import rbrezic.zavrsnirad.utility.HibernateUtil;
+
 import rbrezic.zavrsnirad.utility.PocetniInsert;
+import rbrezic.zavrsnirad.view.Autorizacija;
 
 /**
  *
@@ -14,9 +15,8 @@ import rbrezic.zavrsnirad.utility.PocetniInsert;
  */
 public class Start {
     public static void main(String[] args) {
-        HibernateUtil.getSessionFactory().openSession();
-        
-        PocetniInsert.izvedi();
+        new Autorizacija().setVisible(true);
+        //PocetniInsert.izvedi();
     }
     
 }
