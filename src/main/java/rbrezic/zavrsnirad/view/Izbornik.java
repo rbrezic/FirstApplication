@@ -17,8 +17,11 @@ public class Izbornik extends javax.swing.JFrame {
     public Izbornik() {
         initComponents();
         jmNaslovGrana.setText(Aplikacija.NASLOV_APP);
+        lblPrijavljeni.setText("Prijavljeni kao - " + Aplikacija.operater.getImePrezime());
+        //setTitle(Aplikacija.operater.getImePrezime());
         
         jmiOperateri.setVisible(Aplikacija.isAdmin());
+     
     }
 
     /**
@@ -30,6 +33,7 @@ public class Izbornik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPrijavljeni = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmNaslovGrana = new javax.swing.JMenu();
         jmiOperateri = new javax.swing.JMenuItem();
@@ -41,9 +45,13 @@ public class Izbornik extends javax.swing.JFrame {
         jmiIzlaz = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lblPrijavljeni.setText("Prijavljeni");
 
         jmNaslovGrana.setText("NASLOV");
+        jmNaslovGrana.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jmiOperateri.setText("Operateri");
         jmNaslovGrana.add(jmiOperateri);
@@ -71,6 +79,7 @@ public class Izbornik extends javax.swing.JFrame {
         jmNaslovGrana.add(jmiVrste);
         jmNaslovGrana.add(jSeparator1);
 
+        jmiIzlaz.setBackground(new java.awt.Color(255, 255, 255));
         jmiIzlaz.setText("Izlaz");
         jmiIzlaz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,8 +89,6 @@ public class Izbornik extends javax.swing.JFrame {
         jmNaslovGrana.add(jmiIzlaz);
 
         jMenuBar1.add(jmNaslovGrana);
-
-        jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -90,14 +97,19 @@ public class Izbornik extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblPrijavljeni, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 204, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 263, Short.MAX_VALUE)
+                .addComponent(lblPrijavljeni, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiNekretnineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNekretnineActionPerformed
@@ -160,5 +172,9 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiOperateri;
     private javax.swing.JMenuItem jmiVlasnici;
     private javax.swing.JMenuItem jmiVrste;
+    private javax.swing.JLabel lblPrijavljeni;
     // End of variables declaration//GEN-END:variables
+
 }
+
+

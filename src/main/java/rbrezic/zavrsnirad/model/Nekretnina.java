@@ -17,9 +17,9 @@ import javax.persistence.ManyToOne;
 public class Nekretnina extends Entitet {
     
     private String naziv;
-    private Boolean legalizacija;
     private BigDecimal kvadratura;
     private String opis;
+    private Boolean legalizacija;
 
     @ManyToOne
     private Lokacija lokacija;

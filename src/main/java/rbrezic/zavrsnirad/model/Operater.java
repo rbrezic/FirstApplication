@@ -24,5 +24,8 @@ public class Operater extends Osoba  {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getImePrezime(){
+        return getIme() + " " + getPrezime();
+    }
    
 }

@@ -2,6 +2,7 @@ rbrezic\zavrsnirad\model\Osoba.class
 rbrezic\zavrsnirad\model\Lokacija.class
 rbrezic\zavrsnirad\view\Izbornik$2.class
 rbrezic\zavrsnirad\controller\ObradaLokacija.class
+rbrezic\zavrsnirad\view\Autorizacija$4.class
 rbrezic\zavrsnirad\view\Autorizacija.class
 rbrezic\zavrsnirad\model\Vrsta.class
 rbrezic\zavrsnirad\model\Entitet.class
@@ -14,6 +15,7 @@ rbrezic\zavrsnirad\controller\ObradaNekretnina.class
 rbrezic\zavrsnirad\utility\PocetniInsert.class
 rbrezic\zavrsnirad\controller\ObradaOsoba.class
 rbrezic\zavrsnirad\Start.class
+rbrezic\zavrsnirad\view\Nekretnine$1.class
 rbrezic\zavrsnirad\view\Aplikacija.class
 rbrezic\zavrsnirad\view\Izbornik$1.class
 rbrezic\zavrsnirad\utility\HibernateUtil.class
@@ -21,6 +23,7 @@ rbrezic\zavrsnirad\view\Izbornik.class
 rbrezic\zavrsnirad\view\Izbornik$3.class
 rbrezic\zavrsnirad\model\Operater.class
 rbrezic\zavrsnirad\view\Autorizacija$1.class
+rbrezic\zavrsnirad\view\Nekretnine.class
 rbrezic\zavrsnirad\utility\Oib.class
 rbrezic\zavrsnirad\model\Vlasnik.class
 rbrezic\zavrsnirad\model\Nekretnina.class
