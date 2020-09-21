@@ -24,7 +24,7 @@ public class PocetniInsert {
         Operater operater = new Operater();
         operater.setIme("Rafael");
         operater.setPrezime("Brezić");
-        operater.setUloga("oper");
+        operater.setUloga("Operater");
         operater.setEmail("brezicrafael10@gmail.com");
         operater.setOib(Oib.getOibIiCentrala());
         operater.setLozinka(BCrypt.hashpw("r", BCrypt.gensalt()));

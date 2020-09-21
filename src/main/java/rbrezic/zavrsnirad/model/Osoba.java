@@ -15,41 +15,15 @@ import javax.persistence.MappedSuperclass;
  * @author Korisnik
  */
 @MappedSuperclass
-public class Osoba  {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+public class Osoba extends Entitet {
+   
     
-    private long id;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    private String lozinka;
-    private String uloga;
     private String ime;
     private String prezime;
     private String oib;
     private String spol;
 
-    public String getLozinka() {
-        return lozinka;
-    }
-
-    public void setLozinka(String lozinka) {
-        this.lozinka = lozinka;
-    }
-
-    public String getUloga() {
-        return uloga;
-    }
-
-    public void setUloga(String uloga) {
-        this.uloga = uloga;
-    }
+    
 
     public String getIme() {
         return ime;
