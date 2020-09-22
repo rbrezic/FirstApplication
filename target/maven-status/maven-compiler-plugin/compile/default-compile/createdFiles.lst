@@ -4,9 +4,11 @@ rbrezic\zavrsnirad\view\Izbornik$2.class
 rbrezic\zavrsnirad\controller\ObradaLokacija.class
 rbrezic\zavrsnirad\view\Autorizacija$4.class
 rbrezic\zavrsnirad\view\Autorizacija.class
+rbrezic\zavrsnirad\view\Nekretnine$2.class
 rbrezic\zavrsnirad\model\Vrsta.class
 rbrezic\zavrsnirad\model\Entitet.class
 rbrezic\zavrsnirad\controller\ObradaOperater.class
+rbrezic\zavrsnirad\view\Nekretnine$4.class
 rbrezic\zavrsnirad\view\Autorizacija$2.class
 rbrezic\zavrsnirad\view\Izbornik$4.class
 rbrezic\zavrsnirad\controller\ObradaVlasnik.class
@@ -27,5 +29,6 @@ rbrezic\zavrsnirad\view\Nekretnine.class
 rbrezic\zavrsnirad\utility\Oib.class
 rbrezic\zavrsnirad\model\Vlasnik.class
 rbrezic\zavrsnirad\model\Nekretnina.class
+rbrezic\zavrsnirad\view\Nekretnine$3.class
 rbrezic\zavrsnirad\controller\Obrada.class
 rbrezic\zavrsnirad\view\Autorizacija$3.class

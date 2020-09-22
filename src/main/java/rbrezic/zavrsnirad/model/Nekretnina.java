@@ -20,6 +20,9 @@ public class Nekretnina extends Entitet {
     private BigDecimal kvadratura;
     private String opis;
     private Boolean legalizacija;
+    private BigDecimal cijena;
+
+    
 
     @ManyToOne
     private Lokacija lokacija;
@@ -27,6 +30,14 @@ public class Nekretnina extends Entitet {
     private Vrsta vrsta;
     @ManyToOne
     private Vlasnik vlasnik;
+    
+    public BigDecimal getCijena() {
+        return cijena;
+    }
+
+    public void setCijena(BigDecimal cijena) {
+        this.cijena = cijena;
+    }
 
     public String getNaziv() {
         return naziv;
@@ -82,6 +93,10 @@ public class Nekretnina extends Entitet {
 
     public void setVlasnik(Vlasnik vlasnik) {
         this.vlasnik = vlasnik;
+    }
+    @Override
+    public String toString() {
+        return getNaziv();
     }
 
     

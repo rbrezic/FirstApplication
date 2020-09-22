@@ -99,13 +99,13 @@ public class Izbornik extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblPrijavljeni, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 204, Short.MAX_VALUE))
+                .addGap(0, 224, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 263, Short.MAX_VALUE)
-                .addComponent(lblPrijavljeni, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 308, Short.MAX_VALUE)
+                .addComponent(lblPrijavljeni))
         );
 
         pack();
@@ -113,7 +113,7 @@ public class Izbornik extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiNekretnineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNekretnineActionPerformed
-        
+        new Nekretnine().setVisible(true);
     }//GEN-LAST:event_jmiNekretnineActionPerformed
 
     private void jmiVlasniciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVlasniciActionPerformed
