@@ -18,7 +18,7 @@ import rbrezic.zavrsnirad.utility.AgencijaException;
  * @author Korisnik
  */
 public class Nekretnine extends javax.swing.JFrame {
-
+    
     private ObradaNekretnina obrada;
     private Nekretnina entitet;
 
@@ -54,6 +54,10 @@ public class Nekretnine extends javax.swing.JFrame {
         lblm2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtOpis = new javax.swing.JTextArea();
+        lblHRK = new javax.swing.JLabel();
+        txtEuro = new javax.swing.JTextField();
+        lblEur = new javax.swing.JLabel();
+        btnHE = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
@@ -70,6 +74,12 @@ public class Nekretnine extends javax.swing.JFrame {
 
         jLabel3.setText("Cijena");
 
+        txtCijena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCijenaActionPerformed(evt);
+            }
+        });
+
         chbVerificiran.setText("Legalizacija");
 
         lblOpis.setText("Opis");
@@ -80,6 +90,23 @@ public class Nekretnine extends javax.swing.JFrame {
         txtOpis.setRows(5);
         jScrollPane1.setViewportView(txtOpis);
 
+        lblHRK.setText("HRK");
+
+        txtEuro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEuroActionPerformed(evt);
+            }
+        });
+
+        lblEur.setText("EUR");
+
+        btnHE.setText(">>>");
+        btnHE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHEActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -89,20 +116,33 @@ public class Nekretnine extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1)
                     .addComponent(txtNaziv, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCijena, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPoruka, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtKvadratura, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblm2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblOpis, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chbVerificiran, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblOpis, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(chbVerificiran))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(txtKvadratura, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblHRK, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnHE, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblm2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txtEuro, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblEur, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,7 +161,12 @@ public class Nekretnine extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHRK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEur)
+                    .addComponent(btnHE, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblOpis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,7 +220,7 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addComponent(btnDodaj)
                         .addGap(18, 18, 18)
                         .addComponent(btnPromjeni)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -261,7 +306,7 @@ public class Nekretnine extends javax.swing.JFrame {
         if (entitet == null) {
             return;
         }
-
+        txtEuro.setText(entitet.getCijena().toString());
         txtNaziv.setText(entitet.getNaziv());
         txtOpis.setText(entitet.getOpis());
         txtCijena.setText(entitet.getCijena().toString());
@@ -269,9 +314,22 @@ public class Nekretnine extends javax.swing.JFrame {
         chbVerificiran.setSelected(entitet.getLegalizacija());
     }//GEN-LAST:event_lstPodaciValueChanged
 
+    private void txtCijenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCijenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCijenaActionPerformed
+
+    private void txtEuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEuroActionPerformed
+        
+    }//GEN-LAST:event_txtEuroActionPerformed
+
+    private void btnHEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHEActionPerformed
+       
+    }//GEN-LAST:event_btnHEActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnHE;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JCheckBox chbVerificiran;
@@ -281,11 +339,14 @@ public class Nekretnine extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblEur;
+    private javax.swing.JLabel lblHRK;
     private javax.swing.JLabel lblOpis;
     private javax.swing.JLabel lblPoruka;
     private javax.swing.JLabel lblm2;
     private javax.swing.JList<Nekretnina> lstPodaci;
     private javax.swing.JTextField txtCijena;
+    private javax.swing.JTextField txtEuro;
     private javax.swing.JTextField txtKvadratura;
     private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextArea txtOpis;
@@ -302,6 +363,7 @@ public class Nekretnine extends javax.swing.JFrame {
     }
 
     private void ocistiPolja() {
+        txtEuro.setText("");
         txtNaziv.setText("");
         txtKvadratura.setText("");
         txtOpis.setText("");
@@ -310,6 +372,7 @@ public class Nekretnine extends javax.swing.JFrame {
     }
 
     private void postaviVrijednostiUEntitet() {
+        
         try {
             entitet.setKvadratura(new BigDecimal(txtKvadratura.getText()));
         } catch (Exception e) {
@@ -324,6 +387,7 @@ public class Nekretnine extends javax.swing.JFrame {
         } catch (Exception e) {
             entitet.setCijena(BigDecimal.ZERO);
         }
+        
 
         entitet.setLegalizacija(chbVerificiran.isSelected());
         obrada.setEntitet(entitet);

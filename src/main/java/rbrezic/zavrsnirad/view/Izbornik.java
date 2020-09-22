@@ -117,7 +117,7 @@ public class Izbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiNekretnineActionPerformed
 
     private void jmiVlasniciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVlasniciActionPerformed
-        
+        new Vlasnici().setVisible(true);
     }//GEN-LAST:event_jmiVlasniciActionPerformed
 
     private void jmiIzlazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiIzlazActionPerformed

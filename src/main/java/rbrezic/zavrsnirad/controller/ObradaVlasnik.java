@@ -6,6 +6,7 @@
 package rbrezic.zavrsnirad.controller;
 
 
+import java.util.List;
 import rbrezic.zavrsnirad.model.Vlasnik;
 import rbrezic.zavrsnirad.utility.AgencijaException;
 import rbrezic.zavrsnirad.utility.Oib;
@@ -15,7 +16,7 @@ import rbrezic.zavrsnirad.utility.Oib;
  * @author Korisnik
  * 
  */
-public abstract class ObradaVlasnik extends Obrada<Vlasnik>  {
+public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
     
     
     @Override
@@ -42,9 +43,20 @@ public abstract class ObradaVlasnik extends Obrada<Vlasnik>  {
             throw new AgencijaException("Ime obavezno");
         }
     }
-    
-    
+
+    @Override
+    public List<Vlasnik> getPodaci() {
+      return sesion.createQuery("from Vlasnik").list(); }
+
+    @Override
+    protected void kontrolaDelete() throws AgencijaException {
+        }
+
 }
+
+   
+    
+
 
 
     
