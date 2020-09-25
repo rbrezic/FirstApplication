@@ -36,11 +36,23 @@ public class PocetniInsert {
         } catch (AgencijaException ex) {
             ex.printStackTrace();
         }
+        
+        Nekretnina villa = kreirajNekretninu("Villa Ivan",new BigDecimal(4000),"Dvije sobe",true,new BigDecimal(150000));
+        Nekretnina villa1 = kreirajNekretninu("Villa Marko",new BigDecimal(120),"Tri sobe",true,new BigDecimal(250000));
     
          session.beginTransaction();
-    
-    
-    
-    
+         session.save(villa);
+         session.save(villa1);
+         session.getTransaction().commit();
+    }
+
+    private static Nekretnina kreirajNekretninu(String naziv, BigDecimal kvadratura, String opis, boolean legalizacija, BigDecimal cijena) {
+        Nekretnina nekretnina = new Nekretnina();
+        nekretnina.setNaziv(naziv);
+        nekretnina.setKvadratura(kvadratura);
+        nekretnina.setOpis(opis);
+        nekretnina.setLegalizacija(legalizacija);
+        nekretnina.setCijena(cijena);
+        return nekretnina; 
     }
 }

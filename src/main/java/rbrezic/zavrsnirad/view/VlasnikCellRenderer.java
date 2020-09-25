@@ -19,6 +19,8 @@ import rbrezic.zavrsnirad.model.Vlasnik;
  */
 public class VlasnikCellRenderer extends JLabel implements ListCellRenderer<Vlasnik> {
 
+   
+
     @Override
     public Component getListCellRendererComponent(JList<? extends Vlasnik> list, Vlasnik value, int index, boolean isSelected, boolean cellHasFocus) {
         setText(value.getIme() + " " + value.getPrezime());

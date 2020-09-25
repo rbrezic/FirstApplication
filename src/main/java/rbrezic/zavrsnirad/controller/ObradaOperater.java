@@ -14,7 +14,7 @@ import rbrezic.zavrsnirad.utility.AgencijaException;
  *
  * @author Korisnik
  */
-public class ObradaOperater extends Obrada<Operater> {
+public class ObradaOperater extends ObradaOsoba<Operater> {
     
     public Operater autoriziraj(String email, char[] lozinka){
         
