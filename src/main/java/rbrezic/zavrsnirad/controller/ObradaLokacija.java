@@ -5,6 +5,8 @@
  */
 package rbrezic.zavrsnirad.controller;
 
+import java.util.List;
+
 import rbrezic.zavrsnirad.model.Lokacija;
 import rbrezic.zavrsnirad.utility.AgencijaException;
 
@@ -13,7 +15,14 @@ import rbrezic.zavrsnirad.utility.AgencijaException;
  * @author Korisnik
  * 
  */
-public abstract class ObradaLokacija extends Obrada<Lokacija> {
+public class ObradaLokacija extends Obrada<Lokacija> {
+    
+    @Override
+    public List<Lokacija> getPodaci() {
+        return session.createQuery("from Lokacija").list();
+         }
+
+    
 
     @Override
     protected void kontrolaCreate() throws AgencijaException {
@@ -36,9 +45,9 @@ public abstract class ObradaLokacija extends Obrada<Lokacija> {
     }
 
     private void kontrolaZupanija() throws AgencijaException {
-        if(entitet.getZupanija()==null || entitet.getZupanija().isEmpty() ){
-          throw  new AgencijaException("Unos županije obavezan");
-        }
+        //if(entitet.getZupanija()==null || entitet.getZupanija().isEmpty() ){
+        //  throw  new AgencijaException("Unos županije obavezan");
+        //}
     }
     private void kontrolaNazivMjesta() throws AgencijaException {
         if(entitet.getNazivMjesta()==null || entitet.getNazivMjesta().isEmpty() ){
@@ -65,7 +74,10 @@ public abstract class ObradaLokacija extends Obrada<Lokacija> {
         }
         
     }
+
     
+
+
 }
 
 

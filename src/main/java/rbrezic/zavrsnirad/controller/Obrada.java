@@ -16,7 +16,7 @@ import rbrezic.zavrsnirad.utility.HibernateUtil;
  */
 public abstract class Obrada<T> {
     protected T entitet;
-    protected Session sesion;
+    protected Session session;
     
     public abstract List<T> getPodaci();
     protected abstract void kontrolaCreate() throws AgencijaException;
@@ -29,7 +29,7 @@ public abstract class Obrada<T> {
     }  
     
     public Obrada() {
-        this.sesion = HibernateUtil.getSessionFactory().openSession();
+        this.session = HibernateUtil.getSessionFactory().openSession();
     }
 
     public T create() throws AgencijaException {
@@ -39,13 +39,13 @@ public abstract class Obrada<T> {
     }
     
     public T createAll(List<T> lista) throws AgencijaException {
-        sesion.beginTransaction();
+        session.beginTransaction();
         for (T t : lista) {
             setEntitet(t);
             kontrolaCreate();
-            sesion.save(t);
+            session.save(t);
         }
-        sesion.getTransaction().commit();
+        session.getTransaction().commit();
        
       
         return entitet;
@@ -59,16 +59,16 @@ public abstract class Obrada<T> {
 
     public boolean delete() throws AgencijaException {
         kontrolaDelete();
-        sesion.beginTransaction();
-        sesion.delete(entitet);
-        sesion.getTransaction().commit();
+        session.beginTransaction();
+        session.delete(entitet);
+        session.getTransaction().commit();
         return true;
     }
 
     private void save() {
-        sesion.beginTransaction();
-        sesion.save(entitet);
-        sesion.getTransaction().commit();
+        session.beginTransaction();
+        session.save(entitet);
+        session.getTransaction().commit();
     }
 
     public T getEntitet() {

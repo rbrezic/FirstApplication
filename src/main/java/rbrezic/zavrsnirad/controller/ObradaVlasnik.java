@@ -46,7 +46,7 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
 
     @Override
     public List<Vlasnik> getPodaci() {
-      return sesion.createQuery("from Vlasnik").list(); }
+      return session.createQuery("from Vlasnik").list(); }
 
     @Override
     protected void kontrolaDelete() throws AgencijaException {

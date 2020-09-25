@@ -25,7 +25,7 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
 
     @Override
     public List<Nekretnina> getPodaci() {
-        return sesion.createQuery("from Nekretnina").list();
+        return session.createQuery("from Nekretnina").list();
     }
 
     @Override

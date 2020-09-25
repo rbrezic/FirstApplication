@@ -73,6 +73,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmNaslovGrana.add(jmiVlasnici);
 
         jmiLokacije.setText("Lokacije");
+        jmiLokacije.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiLokacijeActionPerformed(evt);
+            }
+        });
         jmNaslovGrana.add(jmiLokacije);
 
         jmiVrste.setText("Vrste");
@@ -124,6 +129,10 @@ public class Izbornik extends javax.swing.JFrame {
                                       
         dispose(); 
     }//GEN-LAST:event_jmiIzlazActionPerformed
+
+    private void jmiLokacijeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiLokacijeActionPerformed
+        new Lokacije().setVisible(true);
+    }//GEN-LAST:event_jmiLokacijeActionPerformed
 
     /**
      * @param args the command line arguments

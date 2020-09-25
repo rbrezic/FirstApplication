@@ -63,6 +63,10 @@ public class Lokacija extends Entitet {
     public void setBrojKuce(String brojKuce) {
         this.brojKuce = brojKuce;
     }
+    @Override
+    public String toString() {
+        return getNazivMjesta();
+    }
 
 
     
