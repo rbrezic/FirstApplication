@@ -18,6 +18,20 @@ import rbrezic.zavrsnirad.utility.Oib;
  */
 public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
     
+    @Override
+    public List<Vlasnik> getPodaci() {
+      return session.createQuery("from Vlasnik").list();
+    }
+    
+    public List<Vlasnik> getPodaci(String uvjet) {
+      return session.createQuery("from Vlasnik v "
+              + " where concat(v.ime, ' ', v.prezime, ' ', v.oib) "
+              + " like :uvjet ")
+              .setParameter("uvjet", "%"+uvjet+"%")
+              .setMaxResults(20)
+              .list();
+    }
+    
     
     @Override
     protected void kontrolaCreate() throws AgencijaException{
@@ -44,9 +58,6 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
         }
     }
 
-    @Override
-    public List<Vlasnik> getPodaci() {
-      return session.createQuery("from Vlasnik").list(); }
 
     @Override
     protected void kontrolaDelete() throws AgencijaException {

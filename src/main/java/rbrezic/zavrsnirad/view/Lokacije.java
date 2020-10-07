@@ -82,6 +82,12 @@ public class Lokacije extends javax.swing.JFrame {
 
         lblZupanija.setText("Županija");
 
+        txtPostanskiBroj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPostanskiBrojActionPerformed(evt);
+            }
+        });
+
         jComboBox2.setMaximumRowCount(16);
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "I-Zagrebačka ", "II-Krapinsko-zagorska ", "III-Sisačko-moslavačka ", "IV-Karlovačka ", "V-Varaždinska ", "VI-Koprivničko-križevačka ", "VII-Bjelovarsko-bilogorska ", "VIII-Primorsko-goranska ", "IX-Ličko-senjska ", "X-Virovitičko-podravska ", "XI-Požeško-slavonska ", "XII-Brodsko-posavska ", "XIII-Zadarska ", "XIV-Osječko-baranjska ", "XV-Šibensko-kninska ", "XVI-Vukovarsko-srijemska ", "XVII-Splitsko-dalmatinska ", "XVIII-Istarska", "XIX-Dubrovačko-neretvanska ", "XX-Međimurska ", "Grad Zagreb" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -319,6 +325,10 @@ public class Lokacije extends javax.swing.JFrame {
         System.out.println(jComboBox2.getSelectedItem());
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
+    private void txtPostanskiBrojActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPostanskiBrojActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPostanskiBrojActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -371,7 +381,7 @@ public class Lokacije extends javax.swing.JFrame {
     private void postaviVrijednostiUEntitet() {
 
         entitet.setNazivMjesta(txtNaziv.getText());
-        entitet.setPostanskiBroj(txtUlica.getText());
+        entitet.setPostanskiBroj(txtPostanskiBroj.getText());
         entitet.setUlica(txtUlica.getText());
         entitet.setBrojKuce(txtBrojKuce.getText());
         obrada.setEntitet(entitet);

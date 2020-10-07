@@ -13,6 +13,7 @@ rbrezic\zavrsnirad\model\Entitet.class
 rbrezic\zavrsnirad\view\Izbornik$4.class
 rbrezic\zavrsnirad\utility\AgencijaException.class
 rbrezic\zavrsnirad\controller\ObradaNekretnina.class
+rbrezic\zavrsnirad\view\Nekretnine$9.class
 rbrezic\zavrsnirad\utility\PocetniInsert.class
 rbrezic\zavrsnirad\view\Lokacije$7.class
 rbrezic\zavrsnirad\view\Vlasnici$4.class
@@ -20,6 +21,7 @@ rbrezic\zavrsnirad\Start.class
 rbrezic\zavrsnirad\view\Nekretnine$1.class
 rbrezic\zavrsnirad\view\Aplikacija.class
 rbrezic\zavrsnirad\view\Izbornik$1.class
+rbrezic\zavrsnirad\view\Lokacije$9.class
 rbrezic\zavrsnirad\view\Izbornik.class
 rbrezic\zavrsnirad\view\Vrste$2.class
 rbrezic\zavrsnirad\view\Vlasnici$7.class
@@ -28,14 +30,16 @@ rbrezic\zavrsnirad\utility\Oib.class
 rbrezic\zavrsnirad\view\Vlasnici$3.class
 rbrezic\zavrsnirad\view\Izbornik$5.class
 rbrezic\zavrsnirad\view\Lokacije$6.class
+rbrezic\zavrsnirad\view\Nekretnine$8.class
+rbrezic\zavrsnirad\view\Nekretnine$7.class
 rbrezic\zavrsnirad\view\Vlasnici$6.class
 rbrezic\zavrsnirad\view\Vrste$1.class
 rbrezic\zavrsnirad\view\Izbornik$2.class
 rbrezic\zavrsnirad\view\Autorizacija.class
+rbrezic\zavrsnirad\view\Nekretnine$10.class
 rbrezic\zavrsnirad\view\Lokacije.class
 rbrezic\zavrsnirad\view\Lokacije$8.class
 rbrezic\zavrsnirad\controller\ObradaOperater.class
-rbrezic\zavrsnirad\view\Vlasnici$9.class
 rbrezic\zavrsnirad\controller\ObradaVrsta.class
 rbrezic\zavrsnirad\view\Nekretnine$4.class
 rbrezic\zavrsnirad\view\Autorizacija$2.class
