@@ -24,8 +24,17 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
     }
 
     @Override
-    public List<Nekretnina> getPodaci() {
-        return session.createQuery("from Nekretnina").list();
+   public List<Nekretnina> getPodaci() {
+      return session.createQuery("from Nekretnina").list();
+    }
+    
+    public List<Nekretnina> getPodaci(String uvjet) {
+      return session.createQuery("from Nekretnina n "
+              + " where concat(n.naziv) "
+              + " like :uvjet ")
+              .setParameter("uvjet", "%"+uvjet+"%")
+              .setMaxResults(20)
+              .list();
     }
 
     @Override

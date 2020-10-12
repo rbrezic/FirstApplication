@@ -192,9 +192,6 @@
         <Component class="javax.swing.JLabel" name="lblPoruka">
         </Component>
         <Component class="javax.swing.JTextField" name="txtPostanskiBroj">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPostanskiBrojActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBrojKuce">
         </Component>
@@ -262,7 +259,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtUvjet">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUvjetActionPerformed"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUvjetKeyReleased"/>
       </Events>
     </Component>

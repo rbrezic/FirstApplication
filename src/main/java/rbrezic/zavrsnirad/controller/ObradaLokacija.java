@@ -8,6 +8,7 @@ package rbrezic.zavrsnirad.controller;
 import java.util.List;
 
 import rbrezic.zavrsnirad.model.Lokacija;
+import rbrezic.zavrsnirad.model.Nekretnina;
 import rbrezic.zavrsnirad.utility.AgencijaException;
 
 /**
@@ -31,6 +32,14 @@ public class ObradaLokacija extends Obrada<Lokacija> {
         kontrolaPostanskiBroj();
         kontrolaUlica();
         kontrolaBrojKuce();
+    }
+    public List<Lokacija> getPodaci(String uvjet) {
+      return session.createQuery("from Lokacija l "
+              + " where concat(l.nazivMjesta) "
+              + " like :uvjet ")
+              .setParameter("uvjet", "%"+uvjet+"%")
+              .setMaxResults(20)
+              .list();
     }
 
     @Override

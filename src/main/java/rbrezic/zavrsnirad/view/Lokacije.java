@@ -8,13 +8,10 @@ package rbrezic.zavrsnirad.view;
 
 import java.awt.Component;
 import java.awt.event.KeyEvent;
-import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
 import rbrezic.zavrsnirad.controller.ObradaLokacija;
-import rbrezic.zavrsnirad.controller.ObradaVlasnik;
 import rbrezic.zavrsnirad.model.Lokacija;
-import rbrezic.zavrsnirad.model.Vlasnik;
 import rbrezic.zavrsnirad.utility.AgencijaException;
 
 /**
@@ -33,7 +30,7 @@ public class Lokacije extends javax.swing.JFrame {
         initComponents();
         btnTrazi.setText("\uD83D\uDD0E");
         obrada = new ObradaLokacija(); 
-        setTitle("Lokacije");
+        setTitle("Vrste");
         ucitajPodatke();
     }
 
@@ -81,12 +78,6 @@ public class Lokacije extends javax.swing.JFrame {
         lblUlica.setText("Ulica i broj kuće");
 
         lblZupanija.setText("Županija");
-
-        txtPostanskiBroj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPostanskiBrojActionPerformed(evt);
-            }
-        });
 
         jComboBox2.setMaximumRowCount(16);
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "I-Zagrebačka ", "II-Krapinsko-zagorska ", "III-Sisačko-moslavačka ", "IV-Karlovačka ", "V-Varaždinska ", "VI-Koprivničko-križevačka ", "VII-Bjelovarsko-bilogorska ", "VIII-Primorsko-goranska ", "IX-Ličko-senjska ", "X-Virovitičko-podravska ", "XI-Požeško-slavonska ", "XII-Brodsko-posavska ", "XIII-Zadarska ", "XIV-Osječko-baranjska ", "XV-Šibensko-kninska ", "XVI-Vukovarsko-srijemska ", "XVII-Splitsko-dalmatinska ", "XVIII-Istarska", "XIX-Dubrovačko-neretvanska ", "XX-Međimurska ", "Grad Zagreb" }));
@@ -163,11 +154,6 @@ public class Lokacije extends javax.swing.JFrame {
             }
         });
 
-        txtUvjet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUvjetActionPerformed(evt);
-            }
-        });
         txtUvjet.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUvjetKeyReleased(evt);
@@ -307,10 +293,6 @@ public class Lokacije extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
 
-    private void txtUvjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUvjetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUvjetActionPerformed
-
     private void txtUvjetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUvjetKeyReleased
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             ucitajPodatke();
@@ -324,10 +306,6 @@ public class Lokacije extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         System.out.println(jComboBox2.getSelectedItem());
     }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void txtPostanskiBrojActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPostanskiBrojActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPostanskiBrojActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,7 +334,7 @@ public class Lokacije extends javax.swing.JFrame {
         DefaultListModel<Lokacija> m = new DefaultListModel<>();
 
       
-        obrada.getPodaci().forEach(s -> m.addElement(s));
+        obrada.getPodaci(txtUvjet.getText()).forEach(s -> m.addElement(s));
 
         lstPodaci.setModel(m);
 

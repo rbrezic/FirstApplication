@@ -19,6 +19,14 @@ public class ObradaVrsta extends Obrada<Vrsta> {
     public List<Vrsta> getPodaci() {
         return session.createQuery("from Vrsta").list();
         }
+    public List<Vrsta> getPodaci(String uvjet) {
+      return session.createQuery("from Vrsta v "
+              + " where concat(v.naziv) "
+              + " like :uvjet ")
+              .setParameter("uvjet", "%"+uvjet+"%")
+              .setMaxResults(20)
+              .list();
+    }
 
     @Override
     protected void kontrolaCreate() throws AgencijaException {

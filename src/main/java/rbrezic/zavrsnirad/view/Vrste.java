@@ -5,18 +5,32 @@
  */
 package rbrezic.zavrsnirad.view;
 
+import java.awt.Component;
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultListModel;
+import javax.swing.JTextField;
+import rbrezic.zavrsnirad.controller.ObradaVrsta;
+import rbrezic.zavrsnirad.model.Vrsta;
+import rbrezic.zavrsnirad.utility.AgencijaException;
+
 /**
  *
  * @author Korisnik
  */
 public class Vrste extends javax.swing.JFrame {
+    
+    private ObradaVrsta obrada;
+    private Vrsta entitet;
 
     /**
      * Creates new form Vrste
      */
     public Vrste() {
         initComponents();
+        btnTrazi.setText("\uD83D\uDD0E");
+        obrada = new ObradaVrsta();
         setTitle("Vrste");
+        ucitajPodatke();
         
     }
 
@@ -29,17 +43,100 @@ public class Vrste extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstPodaci = new javax.swing.JList<>();
+        txtUvjet = new javax.swing.JTextField();
+        btnTrazi = new javax.swing.JButton();
+        pnlPodaci = new javax.swing.JPanel();
+        lblPoruka = new javax.swing.JLabel();
+        txtVrsta = new javax.swing.JTextField();
         lblVrsta = new javax.swing.JLabel();
-        cmbVrsta = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        btnDodaj = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
+        btnObrisi = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblVrsta.setText("Vrsta");
+        lstPodaci.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstPodaciValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstPodaci);
 
-        cmbVrsta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Stan", "Kuća", "Apartman", "Poslovni prostor", "Građevno zemljište", "Poljoprivredno zemljište", "Vila" }));
-        cmbVrsta.addActionListener(new java.awt.event.ActionListener() {
+        txtUvjet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbVrstaActionPerformed(evt);
+                txtUvjetActionPerformed(evt);
+            }
+        });
+        txtUvjet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUvjetKeyReleased(evt);
+            }
+        });
+
+        btnTrazi.setText("T");
+        btnTrazi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraziActionPerformed(evt);
+            }
+        });
+
+        pnlPodaci.setBorder(javax.swing.BorderFactory.createTitledBorder("Podaci"));
+
+        lblVrsta.setText("Dodaj vrstu");
+
+        jLabel1.setText("npr. Stan ,Kuća, Apartman, Poslovni prostor, Građevno zemljište, Poljoprivredno zemljište, Vila");
+
+        javax.swing.GroupLayout pnlPodaciLayout = new javax.swing.GroupLayout(pnlPodaci);
+        pnlPodaci.setLayout(pnlPodaciLayout);
+        pnlPodaciLayout.setHorizontalGroup(
+            pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPodaciLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                    .addGroup(pnlPodaciLayout.createSequentialGroup()
+                        .addComponent(lblVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlPodaciLayout.createSequentialGroup()
+                        .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPoruka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtVrsta, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
+        );
+        pnlPodaciLayout.setVerticalGroup(
+            pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPodaciLayout.createSequentialGroup()
+                .addComponent(lblVrsta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
+
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
+        btnObrisi.setText("Obriši");
+        btnObrisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiActionPerformed(evt);
             }
         });
 
@@ -47,73 +144,158 @@ public class Vrste extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTrazi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cmbVrsta, 0, 185, Short.MAX_VALUE))
+                        .addComponent(btnDodaj)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPromjeni)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlPodaci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblVrsta)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTrazi))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(pnlPodaci, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDodaj)
+                    .addComponent(btnPromjeni)
+                    .addComponent(btnObrisi))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbVrstaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVrstaActionPerformed
-        System.out.println(cmbVrsta.getSelectedItem());
-    }//GEN-LAST:event_cmbVrstaActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vrste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vrste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vrste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vrste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
+        if (evt.getValueIsAdjusting()) {
+            return;
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vrste().setVisible(true);
-            }
-        });
-    }
+        
+        if (entitet == null) {
+            return;
+        }
+        txtVrsta.setText(entitet.getNaziv());
+    }//GEN-LAST:event_lstPodaciValueChanged
+
+    private void txtUvjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUvjetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUvjetActionPerformed
+
+    private void txtUvjetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUvjetKeyReleased
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            ucitajPodatke();
+        }
+    }//GEN-LAST:event_txtUvjetKeyReleased
+
+    private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
+        ucitajPodatke();
+    }//GEN-LAST:event_btnTraziActionPerformed
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+
+        lblPoruka.setText("");
+        entitet = new Vrsta();
+
+        postaviVrijednostiUEntitet();
+
+        try {
+            obrada.create();
+            ucitajPodatke();
+            ocistiPolja();
+        } catch (AgencijaException ex) {
+            lblPoruka.setText(ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        entitet = lstPodaci.getSelectedValue();
+        if (entitet == null) {
+            return;
+        }
+
+        postaviVrijednostiUEntitet();
+        try {
+            obrada.update();
+            ucitajPodatke();
+            ocistiPolja();
+
+        } catch (AgencijaException e) {
+            lblPoruka.setText(e.getPoruka());
+        }
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
+        entitet = lstPodaci.getSelectedValue();
+        if (entitet == null) {
+            return;
+        }
+
+        obrada.setEntitet(entitet);
+
+        try {
+            obrada.delete();
+            ucitajPodatke();
+            ocistiPolja();
+        } catch (AgencijaException e) {
+            lblPoruka.setText(e.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrisiActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbVrsta;
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnPromjeni;
+    private javax.swing.JButton btnTrazi;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblPoruka;
     private javax.swing.JLabel lblVrsta;
+    private javax.swing.JList<Vrsta> lstPodaci;
+    private javax.swing.JPanel pnlPodaci;
+    private javax.swing.JTextField txtUvjet;
+    private javax.swing.JTextField txtVrsta;
     // End of variables declaration//GEN-END:variables
 
     private void ucitajPodatke() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        DefaultListModel<Vrsta> m = new DefaultListModel<>();
+        obrada.getPodaci(txtUvjet.getText()).forEach(s -> m.addElement(s));
+        lstPodaci.setModel(m);
+
     }
+     private void ocistiPolja() {
+        
+        for(Component c : pnlPodaci.getComponents()){
+            if (c instanceof JTextField){
+                ((JTextField) c).setText("");
+            } 
+        }
+        lblPoruka.setText("");
+        
+    }
+     private void postaviVrijednostiUEntitet() {
+         entitet.setNaziv(txtVrsta.getText());
+         obrada.setEntitet(entitet);
+    }    
 }

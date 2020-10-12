@@ -9,16 +9,23 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.apache.commons.imaging.ImageFormats;
+import org.apache.commons.imaging.Imaging;
 import rbrezic.zavrsnirad.controller.ObradaLokacija;
 import rbrezic.zavrsnirad.controller.ObradaNekretnina;
 import rbrezic.zavrsnirad.controller.ObradaVlasnik;
@@ -45,6 +52,7 @@ public class Nekretnine extends javax.swing.JFrame {
         initComponents();
         
         obrada = new ObradaNekretnina();
+        btnTrazi.setText("\uD83D\uDD0E");
         setTitle("Nekretnine");
         ucitajPodatke();
         
@@ -86,12 +94,13 @@ public class Nekretnine extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtOpis = new javax.swing.JTextArea();
         lblHRK = new javax.swing.JLabel();
+        lblSlika3 = new javax.swing.JLabel();
         lblSlika1 = new javax.swing.JLabel();
-        lblSlika2 = new javax.swing.JLabel();
         lblLokacija = new javax.swing.JLabel();
         cmbLokacija = new javax.swing.JComboBox<>();
         cmbVlasnik = new javax.swing.JComboBox<>();
         lblVlasnik = new javax.swing.JLabel();
+        lblSlika2 = new javax.swing.JLabel();
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
@@ -112,12 +121,6 @@ public class Nekretnine extends javax.swing.JFrame {
 
         jLabel3.setText("Cijena");
 
-        txtCijena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCijenaActionPerformed(evt);
-            }
-        });
-
         chbVerificiran.setText("Legalizacija");
 
         lblOpis.setText("Opis");
@@ -130,13 +133,30 @@ public class Nekretnine extends javax.swing.JFrame {
 
         lblHRK.setText("HRK");
 
-        lblSlika1.setText("[Slika 2]");
+        lblSlika3.setText("[Slika 3]");
+        lblSlika3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSlika3MouseClicked(evt);
+            }
+        });
 
-        lblSlika2.setText("[Slika 1]");
+        lblSlika1.setText("[Slika 1]");
+        lblSlika1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSlika1MouseClicked(evt);
+            }
+        });
 
         lblLokacija.setText("Lokacija");
 
         lblVlasnik.setText("Vlasnik");
+
+        lblSlika2.setText("[Slika 2]");
+        lblSlika2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSlika2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,8 +165,6 @@ public class Nekretnine extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbVlasnik, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -163,18 +181,23 @@ public class Nekretnine extends javax.swing.JFrame {
                                 .addGap(43, 43, 43)
                                 .addComponent(lblm2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(lblSlika2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblLokacija)
+                        .addComponent(lblSlika1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cmbLokacija, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblOpis, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                            .addComponent(chbVerificiran, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbVlasnik, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cmbLokacija, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblOpis, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                .addComponent(chbVerificiran, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(lblVlasnik)
+                            .addComponent(lblLokacija))
                         .addGap(18, 18, 18)
-                        .addComponent(lblSlika1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblVlasnik))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSlika3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSlika2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,20 +227,25 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addComponent(chbVerificiran)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLokacija)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblSlika1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(lblSlika2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblSlika3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cmbLokacija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblVlasnik)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbVlasnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblSlika2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSlika1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         btnDodaj.setText("Dodaj");
@@ -262,7 +290,7 @@ public class Nekretnine extends javax.swing.JFrame {
             }
         });
 
-        btnTrazi.setText("Traži");
+        btnTrazi.setText("T");
         btnTrazi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTraziActionPerformed(evt);
@@ -300,7 +328,7 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExportWord))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,11 +440,48 @@ public class Nekretnine extends javax.swing.JFrame {
         txtKvadratura.setText(entitet.getKvadratura().toString());
         chbVerificiran.setSelected(entitet.getLegalizacija());
         
+        File slika = new File("slike" + File.separator + "nekretnine" + 
+                File.separator + entitet.getId() + "_1.png");
+        if(!slika.exists()){
+                 slika = new File("slike"  + 
+                File.separator +  "nekretninaprazno.png");   
+        }
+        try {
+            ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+            lblSlika1.setIcon(ii);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        slika = new File("slike" + File.separator + "nekretnine" + 
+                File.separator + entitet.getId() + "_2.png");
+        if(!slika.exists()){
+                 slika = new File("slike"  + 
+                File.separator +  "nekretninaprazno.png");    
+        }
+        try {
+            ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+            lblSlika2.setIcon(ii);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        slika = new File("slike" + File.separator + "nekretnine" + 
+                File.separator + entitet.getId() + "_3.png");
+        if(!slika.exists()){
+                 slika = new File("slike"  + 
+                File.separator +  "nekretninaprazno.png");   
+        }
+        try {
+            ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+            lblSlika3.setIcon(ii);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
     }//GEN-LAST:event_lstPodaciValueChanged
-
-    private void txtCijenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCijenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCijenaActionPerformed
 
     private void btnExportJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportJsonActionPerformed
         ExclusionStrategy strategy = new ExclusionStrategy() {
@@ -495,11 +560,83 @@ public class Nekretnine extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void txtUvjetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUvjetKeyReleased
-       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             ucitajPodatke();
         }
     }//GEN-LAST:event_txtUvjetKeyReleased
-       
+
+    private void lblSlika1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlika1MouseClicked
+        if(entitet==null){
+           return;
+       }
+        JFileChooser jfc = new JFileChooser();
+        if(jfc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {
+                BufferedImage bi= Imaging.getBufferedImage(jfc.getSelectedFile());
+                File slika = new File("slike" + File.separator + 
+                        "nekretnine" + File.separator + entitet.getId() + "_1.png");
+                ImageFormats format = ImageFormats.PNG;
+                Map<String, Object> param = new HashMap<>();
+                Imaging.writeImage(bi, slika, format, param);
+                
+                ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+            lblSlika1.setIcon(ii);
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+            }   
+        }
+    }//GEN-LAST:event_lblSlika1MouseClicked
+
+    private void lblSlika2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlika2MouseClicked
+        if(entitet==null){
+           return;
+       }
+        JFileChooser jfc = new JFileChooser();
+        if(jfc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {
+                BufferedImage bi= Imaging.getBufferedImage(jfc.getSelectedFile());
+                File slika = new File("slike" + File.separator + 
+                        "nekretnine" + File.separator + entitet.getId() + "_2.png");
+                ImageFormats format = ImageFormats.PNG;
+                Map<String, Object> param = new HashMap<>();
+                Imaging.writeImage(bi, slika, format, param);
+                
+                ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+            lblSlika2.setIcon(ii);
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+            }   
+        }
+    }//GEN-LAST:event_lblSlika2MouseClicked
+
+    private void lblSlika3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlika3MouseClicked
+        if(entitet==null){
+           return;
+       }
+        JFileChooser jfc = new JFileChooser();
+        if(jfc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {
+                BufferedImage bi= Imaging.getBufferedImage(jfc.getSelectedFile());
+                File slika = new File("slike" + File.separator + 
+                        "nekretnine" + File.separator + entitet.getId() + "_3.png");
+                ImageFormats format = ImageFormats.PNG;
+                Map<String, Object> param = new HashMap<>();
+                Imaging.writeImage(bi, slika, format, param);
+                
+                ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+            lblSlika3.setIcon(ii);
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+            }   
+        }
+    }//GEN-LAST:event_lblSlika3MouseClicked
+           
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -523,6 +660,7 @@ public class Nekretnine extends javax.swing.JFrame {
     private javax.swing.JLabel lblPoruka;
     private javax.swing.JLabel lblSlika1;
     private javax.swing.JLabel lblSlika2;
+    private javax.swing.JLabel lblSlika3;
     private javax.swing.JLabel lblVlasnik;
     private javax.swing.JLabel lblm2;
     private javax.swing.JList<Nekretnina> lstPodaci;
@@ -535,7 +673,7 @@ public class Nekretnine extends javax.swing.JFrame {
 
     private void ucitajPodatke() {
         DefaultListModel<Nekretnina> m = new DefaultListModel<>();
-        obrada.getPodaci().forEach(s -> m.addElement(s));
+        obrada.getPodaci(txtUvjet.getText()).forEach(s -> m.addElement(s));
         lstPodaci.setModel(m);
     }
 
