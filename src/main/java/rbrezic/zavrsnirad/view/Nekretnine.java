@@ -29,9 +29,11 @@ import org.apache.commons.imaging.Imaging;
 import rbrezic.zavrsnirad.controller.ObradaLokacija;
 import rbrezic.zavrsnirad.controller.ObradaNekretnina;
 import rbrezic.zavrsnirad.controller.ObradaVlasnik;
+import rbrezic.zavrsnirad.controller.ObradaVrsta;
 import rbrezic.zavrsnirad.model.Lokacija;
 import rbrezic.zavrsnirad.model.Nekretnina;
 import rbrezic.zavrsnirad.model.Vlasnik;
+import rbrezic.zavrsnirad.model.Vrsta;
 import rbrezic.zavrsnirad.utility.AgencijaException;
 
 
@@ -62,6 +64,12 @@ public class Nekretnine extends javax.swing.JFrame {
             ms.addElement(s);
         });
         cmbLokacija.setModel(ms);
+        
+        DefaultComboBoxModel<Vrsta> ma = new DefaultComboBoxModel<>();
+        new ObradaVrsta().getPodaci().forEach(a -> {
+            ma.addElement(a);
+        });
+        cmbVrsta.setModel(ma);
 
         DefaultComboBoxModel<Vlasnik> mp = new DefaultComboBoxModel<>();
         new ObradaVlasnik().getPodaci().forEach(p -> {
@@ -101,6 +109,8 @@ public class Nekretnine extends javax.swing.JFrame {
         cmbVlasnik = new javax.swing.JComboBox<>();
         lblVlasnik = new javax.swing.JLabel();
         lblSlika2 = new javax.swing.JLabel();
+        cmbVrsta = new javax.swing.JComboBox<>();
+        lblLokacija1 = new javax.swing.JLabel();
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
@@ -158,6 +168,8 @@ public class Nekretnine extends javax.swing.JFrame {
             }
         });
 
+        lblLokacija1.setText("Vrsta");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -192,8 +204,10 @@ public class Nekretnine extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                                 .addComponent(chbVerificiran, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(lblVlasnik)
-                            .addComponent(lblLokacija))
-                        .addGap(18, 18, 18)
+                            .addComponent(lblLokacija)
+                            .addComponent(cmbVrsta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblLokacija1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSlika3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSlika2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -243,7 +257,11 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addComponent(lblVlasnik)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbVlasnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblLokacija1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -328,7 +346,7 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExportWord))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,6 +443,13 @@ public class Nekretnine extends javax.swing.JFrame {
                 break;
             }
         }
+        DefaultComboBoxModel<Vrsta> ma = (DefaultComboBoxModel<Vrsta>) cmbVrsta.getModel();
+        for (int i = 0; i < ms.getSize(); i++) {
+            if (ma.getElementAt(i).getId().equals(entitet.getVrsta().getId())) {
+                cmbVrsta.setSelectedIndex(i);
+                break;
+            }
+        }
 
         DefaultComboBoxModel<Vlasnik> mp = (DefaultComboBoxModel<Vlasnik>) cmbVlasnik.getModel();
         for (int i = 0; i < mp.getSize(); i++) {
@@ -491,6 +516,9 @@ public class Nekretnine extends javax.swing.JFrame {
                     return true;
                 }
                 if (field.getDeclaringClass() == Vlasnici.class && field.getName().equals("nekretnine")) {
+                    return true;
+                }
+                if (field.getDeclaringClass() == Vrste.class && field.getName().equals("nekretnine")) {
                     return true;
                 }
                 return false;
@@ -648,6 +676,7 @@ public class Nekretnine extends javax.swing.JFrame {
     private javax.swing.JCheckBox chbVerificiran;
     private javax.swing.JComboBox<Lokacija> cmbLokacija;
     private javax.swing.JComboBox<Vlasnik> cmbVlasnik;
+    private javax.swing.JComboBox<Vrsta> cmbVrsta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -656,6 +685,7 @@ public class Nekretnine extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHRK;
     private javax.swing.JLabel lblLokacija;
+    private javax.swing.JLabel lblLokacija1;
     private javax.swing.JLabel lblOpis;
     private javax.swing.JLabel lblPoruka;
     private javax.swing.JLabel lblSlika1;
@@ -689,6 +719,7 @@ public class Nekretnine extends javax.swing.JFrame {
         
         entitet.setLokacija((Lokacija) cmbLokacija.getSelectedItem());
         entitet.setVlasnik((Vlasnik) cmbVlasnik.getSelectedItem());
+        entitet.setVrsta((Vrsta) cmbVrsta.getSelectedItem());
         
         try {
             entitet.setKvadratura(new BigDecimal(txtKvadratura.getText()));

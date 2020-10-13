@@ -12,7 +12,6 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -20,7 +19,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.Imaging;
-import org.jfree.chart.encoders.ImageFormat;
 import rbrezic.zavrsnirad.controller.ObradaVlasnik;
 import rbrezic.zavrsnirad.model.Vlasnik;
 import rbrezic.zavrsnirad.utility.AgencijaException;
@@ -31,7 +29,7 @@ import rbrezic.zavrsnirad.utility.AgencijaException;
  */
 public class Vlasnici extends javax.swing.JFrame {
 
-    private ObradaVlasnik obrada;
+    private final ObradaVlasnik obrada;
     private Vlasnik entitet;
 
     /**

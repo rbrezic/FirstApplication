@@ -24,5 +24,6 @@ public class Vlasnik extends Osoba {
     public void setKontakt(String kontakt) {
         this.kontakt = kontakt;
     }
+    
  
 }

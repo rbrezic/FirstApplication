@@ -56,4 +56,7 @@ public class Osoba extends Entitet {
     public void setSpol(String spol) {
         this.spol = spol;
     }
+    public String getImePrezime(){
+        return getIme() + " " + getPrezime();
+    }
 }

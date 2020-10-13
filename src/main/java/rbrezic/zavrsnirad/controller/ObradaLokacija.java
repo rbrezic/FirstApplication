@@ -8,7 +8,6 @@ package rbrezic.zavrsnirad.controller;
 import java.util.List;
 
 import rbrezic.zavrsnirad.model.Lokacija;
-import rbrezic.zavrsnirad.model.Nekretnina;
 import rbrezic.zavrsnirad.utility.AgencijaException;
 
 /**

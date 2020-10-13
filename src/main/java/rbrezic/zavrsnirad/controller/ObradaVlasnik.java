@@ -37,11 +37,13 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
     protected void kontrolaCreate() throws AgencijaException{
         kontrolaIme();
         kontrolaOib();
+        kontrolaOibBazaKreiraj();
     }
     
     @Override
     protected void kontrolaUpdate() throws AgencijaException{
         kontrolaOib();
+        kontrolaOibBazaPromjeni();
     }
     
     protected void kontrolaOib() throws AgencijaException{
@@ -56,6 +58,33 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
         if(entitet.getIme()==null || entitet.getIme().trim().isEmpty()){
             throw new AgencijaException("Ime obavezno");
         }
+    }
+    
+    private void kontrolaOibBazaKreiraj() throws AgencijaException{
+       List<Vlasnik> lista = session.createQuery(""
+               + " from Vlasnik v "
+               + " where v.oib=:oib "
+               )
+               .setParameter("oib", entitet.getOib())
+               .list();
+       if(lista.size()>0){
+           throw  new AgencijaException("Oib je dodjeljen " + lista.get(0).getImePrezime() + ", odaberite drugi OIB");
+       }
+       
+    }
+    
+    private void kontrolaOibBazaPromjeni() throws AgencijaException{
+       List<Vlasnik> lista = session.createQuery(""
+               + " from Vlasnik v "
+               + " where v.oib=:oib and v.id!=:id"
+               )
+               .setParameter("oib", entitet.getOib())
+               .setParameter("id", entitet.getId())
+               .list();
+       if(lista.size()>0){
+           throw  new AgencijaException("Oib je dodjeljen " + lista.get(0).getImePrezime() + ", odaberite drugi OIB");
+       }
+       
     }
 
 

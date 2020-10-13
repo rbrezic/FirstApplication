@@ -48,7 +48,7 @@
                   </Group>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,8 +132,10 @@
                               </Group>
                               <Component id="lblVlasnik" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblLokacija" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbVrsta" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblLokacija1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblSlika3" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="lblSlika2" min="-2" pref="300" max="-2" attributes="0"/>
@@ -194,7 +196,11 @@
                           <Component id="lblVlasnik" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cmbVlasnik" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="70" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblLokacija1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cmbVrsta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="24" max="32767" attributes="0"/>
                           <Component id="lblPoruka" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -315,6 +321,21 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblSlika2MouseClicked"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbVrsta">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Vrsta&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblLokacija1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vrsta"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
