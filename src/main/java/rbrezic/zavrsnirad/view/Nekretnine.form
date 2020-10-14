@@ -48,7 +48,7 @@
                   </Group>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,42 +100,43 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNaziv" alignment="0" min="-2" pref="297" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtKvadratura" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="txtCijena" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblHRK" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <EmptySpace pref="210" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNaziv" alignment="0" min="-2" pref="297" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtCijena" min="-2" pref="82" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblHRK" min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Component id="txtKvadratura" min="-2" pref="174" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="lblm2" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Component id="lblm2" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblSlika1" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmbVlasnik" alignment="0" min="-2" pref="299" max="-2" attributes="0"/>
-                              <Component id="lblPoruka" alignment="0" min="-2" pref="299" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="cmbLokacija" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblOpis" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="0" pref="299" max="32767" attributes="0"/>
-                                  <Component id="chbVerificiran" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cmbVlasnik" alignment="0" pref="299" max="32767" attributes="0"/>
+                              <Component id="lblPoruka" alignment="0" pref="299" max="32767" attributes="0"/>
+                              <Component id="cmbLokacija" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblOpis" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="299" max="32767" attributes="0"/>
+                              <Component id="chbVerificiran" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblVlasnik" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblLokacija" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbVrsta" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblLokacija1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbVrsta" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="24" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblSlika3" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="lblSlika2" min="-2" pref="300" max="-2" attributes="0"/>

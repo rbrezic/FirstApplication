@@ -254,13 +254,10 @@ public class Vlasnici extends javax.swing.JFrame {
         if (evt.getValueIsAdjusting()) {
             return;
         }
-
         entitet = lstPodaci.getSelectedValue();
         if (entitet == null) {
             return;
         }
-
-
         txtIme.setText(entitet.getIme());
         txtPrezime.setText(entitet.getPrezime());
         txtOib.setText(entitet.getOib());
@@ -270,8 +267,7 @@ public class Vlasnici extends javax.swing.JFrame {
                 File.separator + entitet.getId() + ".png");
         if(!slika.exists()){
                  slika = new File("slike"  + 
-                File.separator +  "nepoznato.png");
-           
+                File.separator +  "nepoznato.png");          
         }
         try {
             ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)

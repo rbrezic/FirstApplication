@@ -65,6 +65,10 @@ public class ObradaLokacija extends Obrada<Lokacija> {
     }
 
     private void kontrolaPostanskiBroj() throws AgencijaException {
+        int i=Integer.parseInt(entitet.getPostanskiBroj()); 
+        if(i<10000 || i>53296){
+            throw  new AgencijaException("Nepravilan poštanski broj");
+        }
       
         
     }

@@ -30,7 +30,7 @@ public class Lokacije extends javax.swing.JFrame {
         initComponents();
         btnTrazi.setText("\uD83D\uDD0E");
         obrada = new ObradaLokacija(); 
-        setTitle("Vrste");
+        setTitle("Lokacije");
         ucitajPodatke();
     }
 
@@ -330,30 +330,18 @@ public class Lokacije extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void ucitajPodatke() {
-
-        DefaultListModel<Lokacija> m = new DefaultListModel<>();
-
-      
+        DefaultListModel<Lokacija> m = new DefaultListModel<>();      
         obrada.getPodaci(txtUvjet.getText()).forEach(s -> m.addElement(s));
-
         lstPodaci.setModel(m);
-
     }
 
-    private void ocistiPolja() {
-        
+    private void ocistiPolja() {        
         for(Component c : pnlPodaci.getComponents()){
             if (c instanceof JTextField){
                 ((JTextField) c).setText("");
             } 
         }
         lblPoruka.setText("");
-        
-//        txtIme.setText("");
-//        txtPrezime.setText("");
-//        txtOib.setText("");
-//        txtEmail.setText("");
-//        txtIban.setText("");
     }
 
     private void postaviVrijednostiUEntitet() {

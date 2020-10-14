@@ -64,8 +64,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -96,16 +94,23 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="lblPrijavljeni" min="-2" pref="196" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="224" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblSlika" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="lblPrijavljeni" min="-2" pref="258" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="308" max="32767" attributes="0"/>
-              <Component id="lblPrijavljeni" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblSlika" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblPrijavljeni" min="-2" pref="13" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -114,6 +119,13 @@
     <Component class="javax.swing.JLabel" name="lblPrijavljeni">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prijavljeni"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSlika">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Homes-Real-Estate.png"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

@@ -16,7 +16,8 @@ public class Izbornik extends javax.swing.JFrame {
      */
     public Izbornik() {
         initComponents();
-        jmNaslovGrana.setText(Aplikacija.NASLOV_APP);
+        setTitle("Aplikacija za nekretnine");
+        jmNaslovGrana.setText("Izbornik");
         lblPrijavljeni.setText("Prijavljeni kao - " + Aplikacija.operater.getImePrezime());
         //setTitle(Aplikacija.operater.getImePrezime());
         
@@ -34,6 +35,7 @@ public class Izbornik extends javax.swing.JFrame {
     private void initComponents() {
 
         lblPrijavljeni = new javax.swing.JLabel();
+        lblSlika = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmNaslovGrana = new javax.swing.JMenu();
         jmiOperateri = new javax.swing.JMenuItem();
@@ -43,12 +45,13 @@ public class Izbornik extends javax.swing.JFrame {
         jmiVrste = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmiIzlaz = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lblPrijavljeni.setText("Prijavljeni");
+
+        lblSlika.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Homes-Real-Estate.png"))); // NOI18N
 
         jmNaslovGrana.setText("NASLOV");
         jmNaslovGrana.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -99,7 +102,6 @@ public class Izbornik extends javax.swing.JFrame {
         jmNaslovGrana.add(jmiIzlaz);
 
         jMenuBar1.add(jmNaslovGrana);
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -108,14 +110,20 @@ public class Izbornik extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblPrijavljeni, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 224, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblSlika, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblPrijavljeni, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 308, Short.MAX_VALUE)
-                .addComponent(lblPrijavljeni))
+                .addContainerGap()
+                .addComponent(lblSlika, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPrijavljeni, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -180,7 +188,6 @@ public class Izbornik extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu jmNaslovGrana;
@@ -191,6 +198,7 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiVlasnici;
     private javax.swing.JMenuItem jmiVrste;
     private javax.swing.JLabel lblPrijavljeni;
+    private javax.swing.JLabel lblSlika;
     // End of variables declaration//GEN-END:variables
 
 }
