@@ -65,7 +65,7 @@ public class Lokacija extends Entitet {
     }
     @Override
     public String toString() {
-        return getNazivMjesta();
+        return getNazivMjesta()+" ("+getUlica()+getBrojKuce()+")";
     }
 
 

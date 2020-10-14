@@ -8,6 +8,7 @@ package rbrezic.zavrsnirad.model;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Vlasnik extends Osoba {
     public String getKontakt() {
         return kontakt;
     }   
-    /*
+    @OneToMany(mappedBy = "vlasnik")
     private List<Nekretnina> nekretnine = new ArrayList<>();
     public List<Nekretnina> getNekretnine() {
        return nekretnine;
@@ -30,7 +31,7 @@ public class Vlasnik extends Osoba {
     public void setNekretnine(List<Nekretnina> nekretnine) {
         this.nekretnine = nekretnine;
     }
-    */
+    
 
     public void setKontakt(String kontakt) {
         this.kontakt = kontakt;

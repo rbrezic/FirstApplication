@@ -90,6 +90,9 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
 
     @Override
     protected void kontrolaDelete() throws AgencijaException {
+        if (!entitet.getNekretnine().isEmpty()){
+            throw new AgencijaException("Vlasnik posjeduje nekretninu");
+        }
         }
 
 }
