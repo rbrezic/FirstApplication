@@ -5,7 +5,10 @@
  */
 package rbrezic.zavrsnirad.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,6 +21,12 @@ public class Vrsta extends Entitet {
 
     public String getNaziv() {
         return naziv;
+    }
+    
+    @OneToMany(mappedBy = "vrsta")
+    private List<Nekretnina> nekretnine = new ArrayList<>();
+    public List<Nekretnina> getNekretnine() {
+       return nekretnine;
     }
 
     public void setNaziv(String naziv) {

@@ -26,7 +26,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.Imaging;
-import org.apache.poi.poifs.crypt.CryptoFunctions;
 import rbrezic.zavrsnirad.controller.ObradaLokacija;
 import rbrezic.zavrsnirad.controller.ObradaNekretnina;
 import rbrezic.zavrsnirad.controller.ObradaVlasnik;
