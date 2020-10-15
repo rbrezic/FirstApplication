@@ -5,8 +5,11 @@
  */
 package rbrezic.zavrsnirad.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,6 +26,13 @@ public class Lokacija extends Entitet {
     private String ulica;
     @Column(name = "broj_kuce")
     private String brojKuce;
+    
+    
+     @OneToMany(mappedBy = "lokacija")
+    private List<Nekretnina> nekretnine = new ArrayList<>();
+    public List<Nekretnina> getNekretnine() {
+       return nekretnine;
+    }
 
     public String getZupanija() {
         return zupanija;

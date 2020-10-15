@@ -42,7 +42,7 @@ public class ObradaVrsta extends Obrada<Vrsta> {
     @Override
     protected void kontrolaDelete() throws AgencijaException {
         if (!entitet.getNekretnine().isEmpty()){
-            throw new AgencijaException("NEMOGUĆE BRISANJE (Vrsta je dodijeljena nekoj nekretnini)");
+            throw new AgencijaException("NEMOGUĆE(Vrsta je dodijeljena nekoj nekretnini)");
         }
         
          }

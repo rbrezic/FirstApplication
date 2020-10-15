@@ -5,6 +5,7 @@
  */
 package rbrezic.zavrsnirad.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import rbrezic.zavrsnirad.model.Nekretnina;
 import rbrezic.zavrsnirad.utility.AgencijaException;
@@ -53,9 +54,28 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
       }
 
     private void kontrolaNaziv() throws AgencijaException { 
-        if(entitet.getNaziv()==null || entitet.getNaziv().isEmpty() ){
-          throw  new AgencijaException("Unos naziva obavezan");
+        if(entitet.getNaziv().isEmpty()){
+            throw new AgencijaException("Naziv nije postavljen, unijeti naziv");
         }
-     }
+        boolean broj=false;
+        try {
+            new BigDecimal(entitet.getNaziv());
+            broj=true;
+        } catch (Exception e) {
+        }
+        if(broj){
+            throw new AgencijaException("Naziv ne može biti broj, unijeti naziv");
+        }
+        
+        if(entitet.getNaziv().length()>50){
+            throw new AgencijaException("Dužina naziva ne može biti veća od 50 znakova");
+        }
+    }
+     
+    private void kontrolaNull(Object o, String poruka) throws AgencijaException{
+        if(o==null){
+            throw new AgencijaException(poruka);
+        }
+    }
     
 }

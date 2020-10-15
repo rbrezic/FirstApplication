@@ -5,6 +5,7 @@
  */
 package rbrezic.zavrsnirad.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import rbrezic.zavrsnirad.model.Lokacija;
@@ -49,6 +50,9 @@ public class ObradaLokacija extends Obrada<Lokacija> {
 
     @Override
     protected void kontrolaDelete() throws AgencijaException {
+        if (!entitet.getNekretnine().isEmpty()){
+            throw new AgencijaException("NEMOGUĆE (Nekretnina posjeduje ovu lokaciju)");
+        }
         
     }
 
@@ -58,8 +62,21 @@ public class ObradaLokacija extends Obrada<Lokacija> {
         //}
     }
     private void kontrolaNazivMjesta() throws AgencijaException {
-        if(entitet.getNazivMjesta()==null || entitet.getNazivMjesta().isEmpty() ){
-          throw  new AgencijaException("Unos naziva mjesta obavezan");
+        if(entitet.getNazivMjesta().isEmpty()){
+            throw new AgencijaException("Naziv nije postavljen, unijeti naziv");
+        }
+        boolean broj=false;
+        try {
+            new BigDecimal(entitet.getNazivMjesta());
+            broj=true;
+        } catch (Exception e) {
+        }
+        if(broj){
+            throw new AgencijaException("Naziv ne može biti broj, unijeti naziv");
+        }
+           if(entitet.getNazivMjesta().length()>50){
+            throw new AgencijaException("Dužina naziva ne može biti veća od 50 znakova");
+        
         }
        
     }
