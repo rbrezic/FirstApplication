@@ -42,6 +42,7 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
     protected void kontrolaCreate() throws AgencijaException {
         kontrolaNaziv();
         kontrolaCijena();
+        kontrolaKvadratura();
        }
 
     @Override
@@ -58,6 +59,16 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
         kontrolaNull(entitet.getCijena(), "Cijena nije definirana");
         if(entitet.getCijena().compareTo(BigDecimal.ZERO)<=0){
             throw new AgencijaException("Cijena ne može biti manja ili jednaka nuli");
+            
+        }
+        boolean Cijena=true;
+        try {
+           entitet.getCijena();
+            Cijena=false;
+        } catch (Exception e) {
+        }
+        if(Cijena){
+            throw new AgencijaException("Nepravilna cijena");
         }
      }
     private void kontrolaNaziv() throws AgencijaException { 
@@ -84,5 +95,22 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
             throw new AgencijaException(poruka);
         }
     }
+
+    private void kontrolaKvadratura()throws AgencijaException {
+        kontrolaNull(entitet.getKvadratura(), "Kvadratura nije definirana");
+        if(entitet.getKvadratura().compareTo(BigDecimal.ZERO)<=0){
+            throw new AgencijaException("Kvadratura ne može biti manja ili jednaka nuli");
+            
+        }
+        
+        boolean Kvadratura=true;
+        try {
+           entitet.getKvadratura();
+            Kvadratura=false;
+        } catch (Exception e) {
+        }
+        if(Kvadratura){
+            throw new AgencijaException("Nepravilna kvadratura");
+        }}
     
 }

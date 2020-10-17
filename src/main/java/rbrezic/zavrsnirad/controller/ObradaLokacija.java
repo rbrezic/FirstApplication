@@ -44,7 +44,7 @@ public class ObradaLokacija extends Obrada<Lokacija> {
 
     @Override
     protected void kontrolaUpdate() throws AgencijaException {
-        kontrolaZupanija();
+        kontrolaCreate();
         
     }
 
@@ -82,15 +82,32 @@ public class ObradaLokacija extends Obrada<Lokacija> {
     }
 
     private void kontrolaPostanskiBroj() throws AgencijaException {
+        if(entitet.getPostanskiBroj().isEmpty()){
+            throw new AgencijaException("Poštanski broj nije postavljen");
+        }
+        
+        boolean PostanskiBroj=true;
+        try {
+            new BigDecimal(entitet.getPostanskiBroj());
+            PostanskiBroj=false;
+        } catch (Exception e) {
+        }
+        if(PostanskiBroj){
+            throw new AgencijaException("Nepravilan poštanski broj");
+        }
+        
+        
         int i=Integer.parseInt(entitet.getPostanskiBroj()); 
         if(i<10000 || i>53296){
             throw  new AgencijaException("Nepravilan poštanski broj");
         }
-       if (!entitet.getPostanskiBroj().matches("[0-9]+")){
+        
+        
+       /*if (!entitet.getPostanskiBroj().matches("[0-9]+")){
             throw  new AgencijaException("Nepravilan poštanski broj");
         }
-      // && entitet.getPostanskiBroj().length() > 2
-        
+      && entitet.getPostanskiBroj().length() > 2
+        */
     }
 
     private void kontrolaUlica() throws AgencijaException {
@@ -101,15 +118,25 @@ public class ObradaLokacija extends Obrada<Lokacija> {
     }
 
     private void kontrolaBrojKuce() throws AgencijaException {
-        if(entitet.getBrojKuce()==null || entitet.getBrojKuce().isEmpty() ){
-          throw  new AgencijaException("Unos broja kuće obavezan");
+        if(entitet.getBrojKuce().isEmpty()){
+            throw new AgencijaException("Broj kuće nije postavljen");
         }
+        
+        boolean KucniBroj=true;
+        try {
+            new BigDecimal(entitet.getBrojKuce());
+            KucniBroj=false;
+        } catch (Exception e) {
+        }
+        if(KucniBroj){
+            throw new AgencijaException("Nepravilan broj kuće");
+        }}
         
     }
 
     
 
 
-}
+
 
 
