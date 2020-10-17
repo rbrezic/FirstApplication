@@ -5,6 +5,7 @@
  */
 package rbrezic.zavrsnirad.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import rbrezic.zavrsnirad.model.Vrsta;
 import rbrezic.zavrsnirad.utility.AgencijaException;
@@ -48,8 +49,22 @@ public class ObradaVrsta extends Obrada<Vrsta> {
          }
 
     private void kontrolaVrsta() throws AgencijaException {
-        if(entitet.getNaziv()==null || entitet.getNaziv().trim().isEmpty()){
-            throw new AgencijaException("Vrsta obavezna");
-        } }
+        if(entitet.getNaziv().isEmpty()){
+            throw new AgencijaException("Vrsta nije postavljena, unijeti vrstu");
+        }
+        boolean broj=false;
+        try {
+            new BigDecimal(entitet.getNaziv());
+            broj=true;
+        } catch (Exception e) {
+        }
+        if(broj){
+            throw new AgencijaException("Vrsta ne može biti broj, unijeti vrstu");
+        }
+        
+        if(entitet.getNaziv().length()>50){
+            throw new AgencijaException("Dužina vrste ne može biti veća od 50 znakova");
+        }
+    } }
     
-}
+

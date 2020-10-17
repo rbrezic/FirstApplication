@@ -5,10 +5,12 @@
  */
 package rbrezic.zavrsnirad.view;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import rbrezic.zavrsnirad.controller.ObradaVrsta;
 import rbrezic.zavrsnirad.model.Vrsta;
 import rbrezic.zavrsnirad.utility.AgencijaException;
@@ -224,8 +226,8 @@ public class Vrste extends javax.swing.JFrame {
             obrada.create();
             ucitajPodatke();
             ocistiPolja();
-        } catch (AgencijaException ex) {
-            lblPoruka.setText(ex.getPoruka());
+        } catch (AgencijaException e) {
+            postaviPoruku(e);
         }
     }//GEN-LAST:event_btnDodajActionPerformed
 
@@ -242,7 +244,7 @@ public class Vrste extends javax.swing.JFrame {
             ocistiPolja();
 
         } catch (AgencijaException e) {
-            lblPoruka.setText(e.getPoruka());
+            postaviPoruku(e);
         }
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
@@ -259,10 +261,35 @@ public class Vrste extends javax.swing.JFrame {
             ucitajPodatke();
             ocistiPolja();
         } catch (AgencijaException e) {
-            lblPoruka.setText(e.getPoruka());
+            postaviPoruku(e);
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
+    private void postaviPoruku(AgencijaException e) {
 
+        switch (e.getKomponenta()) {
+            case "naziv":
+                txtVrsta.setBorder(new LineBorder(Color.RED, 2, true));
+                txtVrsta.requestFocus();
+                break;
+        }
+
+        lblPoruka.setText(e.getPoruka());
+        OcistiPoruku op = new OcistiPoruku();
+        op.start();
+    }
+
+    private class OcistiPoruku extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(3 * 1000);
+            } catch (InterruptedException e) {
+            }
+            lblPoruka.setText("");
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnObrisi;

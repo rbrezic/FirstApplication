@@ -324,7 +324,7 @@ public class Lokacije extends javax.swing.JFrame {
         public void run() {
             try {
                 Thread.sleep(3 * 1000);
-            } catch (InterruptedException ex) {
+            } catch (InterruptedException e) {
             }
             lblPoruka.setText("");
         }
