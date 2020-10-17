@@ -41,18 +41,25 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
     @Override
     protected void kontrolaCreate() throws AgencijaException {
         kontrolaNaziv();
+        kontrolaCijena();
        }
 
     @Override
     protected void kontrolaUpdate() throws AgencijaException {
-        kontrolaNaziv();
+        kontrolaCreate();
     }
 
     @Override
     protected void kontrolaDelete() throws AgencijaException {
         
       }
-
+    
+     private void kontrolaCijena() throws AgencijaException{
+        kontrolaNull(entitet.getCijena(), "Cijena nije definirana");
+        if(entitet.getCijena().compareTo(BigDecimal.ZERO)<=0){
+            throw new AgencijaException("Cijena ne može biti manja ili jednaka nuli");
+        }
+     }
     private void kontrolaNaziv() throws AgencijaException { 
         if(entitet.getNaziv().isEmpty()){
             throw new AgencijaException("Naziv nije postavljen, unijeti naziv");

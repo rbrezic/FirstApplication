@@ -9,6 +9,7 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -24,6 +25,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.Imaging;
 import rbrezic.zavrsnirad.controller.ObradaLokacija;
@@ -36,14 +38,12 @@ import rbrezic.zavrsnirad.model.Vlasnik;
 import rbrezic.zavrsnirad.model.Vrsta;
 import rbrezic.zavrsnirad.utility.AgencijaException;
 
-
-
 /**
  *
  * @author Korisnik
  */
 public class Nekretnine extends javax.swing.JFrame {
-    
+
     private ObradaNekretnina obrada;
     private Nekretnina entitet;
 
@@ -52,19 +52,18 @@ public class Nekretnine extends javax.swing.JFrame {
      */
     public Nekretnine() {
         initComponents();
-        
+
         obrada = new ObradaNekretnina();
         btnTrazi.setText("\uD83D\uDD0E");
         setTitle("Nekretnine");
         ucitajPodatke();
-        
-        
-         DefaultComboBoxModel<Lokacija> ms = new DefaultComboBoxModel<>();
+
+        DefaultComboBoxModel<Lokacija> ms = new DefaultComboBoxModel<>();
         new ObradaLokacija().getPodaci().forEach(s -> {
             ms.addElement(s);
         });
         cmbLokacija.setModel(ms);
-        
+
         DefaultComboBoxModel<Vrsta> ma = new DefaultComboBoxModel<>();
         new ObradaVrsta().getPodaci().forEach(a -> {
             ma.addElement(a);
@@ -95,7 +94,7 @@ public class Nekretnine extends javax.swing.JFrame {
         txtKvadratura = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCijena = new javax.swing.JTextField();
-        chbVerificiran = new javax.swing.JCheckBox();
+        chbLegaliziran = new javax.swing.JCheckBox();
         lblPoruka = new javax.swing.JLabel();
         lblOpis = new javax.swing.JLabel();
         lblm2 = new javax.swing.JLabel();
@@ -131,7 +130,7 @@ public class Nekretnine extends javax.swing.JFrame {
 
         jLabel3.setText("Cijena");
 
-        chbVerificiran.setText("Legalizacija");
+        chbLegaliziran.setText("Legalizacija");
 
         lblOpis.setText("Opis");
 
@@ -182,19 +181,16 @@ public class Nekretnine extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblHRK, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE))
+                                .addComponent(lblHRK, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)
+                            .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtKvadratura, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(lblm2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, Short.MAX_VALUE)))
+                                .addComponent(txtKvadratura, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(lblm2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(lblSlika1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,7 +199,7 @@ public class Nekretnine extends javax.swing.JFrame {
                             .addComponent(cmbLokacija, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblOpis, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                            .addComponent(chbVerificiran)
+                            .addComponent(chbLegaliziran)
                             .addComponent(lblVlasnik)
                             .addComponent(lblLokacija)
                             .addComponent(lblLokacija1)
@@ -239,7 +235,7 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(chbVerificiran)
+                        .addComponent(chbLegaliziran)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLokacija)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
@@ -387,8 +383,8 @@ public class Nekretnine extends javax.swing.JFrame {
             obrada.create();
             ucitajPodatke();
             ocistiPolja();
-        } catch (AgencijaException ex) {
-            lblPoruka.setText(ex.getPoruka());
+        } catch (AgencijaException e) {
+            postaviPoruku(e);
         }
 
     }//GEN-LAST:event_btnDodajActionPerformed
@@ -406,7 +402,7 @@ public class Nekretnine extends javax.swing.JFrame {
             ocistiPolja();
 
         } catch (AgencijaException e) {
-            lblPoruka.setText(e.getPoruka());
+            postaviPoruku(e);
         }
 
     }//GEN-LAST:event_btnPromjeniActionPerformed
@@ -424,9 +420,35 @@ public class Nekretnine extends javax.swing.JFrame {
             ucitajPodatke();
             ocistiPolja();
         } catch (AgencijaException e) {
-            lblPoruka.setText(e.getPoruka());
+            postaviPoruku(e);
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
+    private void postaviPoruku(AgencijaException e) {
+
+        switch (e.getKomponenta()) {
+            case "naziv":
+                txtNaziv.setBorder(new LineBorder(Color.RED, 2, true));
+                txtNaziv.requestFocus();
+                break;
+        }
+
+        lblPoruka.setText(e.getPoruka());
+        OcistiPoruku op = new OcistiPoruku();
+        op.start();
+    }
+
+    private class OcistiPoruku extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(3 * 1000);
+            } catch (InterruptedException ex) {
+            }
+            lblPoruka.setText("");
+        }
+
+    }
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
         if (evt.getValueIsAdjusting()) {
@@ -459,55 +481,54 @@ public class Nekretnine extends javax.swing.JFrame {
                 break;
             }
         }
-        
-         
+
         txtNaziv.setText(entitet.getNaziv());
         txtOpis.setText(entitet.getOpis());
         txtCijena.setText(entitet.getCijena().toString());
         txtKvadratura.setText(entitet.getKvadratura().toString());
-        chbVerificiran.setSelected(entitet.getLegalizacija());
-        
-        File slika = new File("slike" + File.separator + "nekretnine" + 
-                File.separator + entitet.getId() + "_1.png");
-        if(!slika.exists()){
-                 slika = new File("slike"  + 
-                File.separator +  "nekretninaprazno.png");   
+        chbLegaliziran.setSelected(entitet.getLegalizacija());
+
+        File slika = new File("slike" + File.separator + "nekretnine"
+                + File.separator + entitet.getId() + "_1.png");
+        if (!slika.exists()) {
+            slika = new File("slike"
+                    + File.separator + "nekretninaprazno.png");
         }
         try {
             ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
-            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+                    .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
             lblSlika1.setIcon(ii);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        slika = new File("slike" + File.separator + "nekretnine" + 
-                File.separator + entitet.getId() + "_2.png");
-        if(!slika.exists()){
-                 slika = new File("slike"  + 
-                File.separator +  "nekretninaprazno.png");    
+        slika = new File("slike" + File.separator + "nekretnine"
+                + File.separator + entitet.getId() + "_2.png");
+        if (!slika.exists()) {
+            slika = new File("slike"
+                    + File.separator + "nekretninaprazno.png");
         }
         try {
             ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
-            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+                    .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
             lblSlika2.setIcon(ii);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        slika = new File("slike" + File.separator + "nekretnine" + 
-                File.separator + entitet.getId() + "_3.png");
-        if(!slika.exists()){
-                 slika = new File("slike"  + 
-                File.separator +  "nekretninaprazno.png");   
+        slika = new File("slike" + File.separator + "nekretnine"
+                + File.separator + entitet.getId() + "_3.png");
+        if (!slika.exists()) {
+            slika = new File("slike"
+                    + File.separator + "nekretninaprazno.png");
         }
         try {
             ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
-            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+                    .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
             lblSlika3.setIcon(ii);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
+
+
     }//GEN-LAST:event_lstPodaciValueChanged
 
     private void btnExportJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportJsonActionPerformed
@@ -543,26 +564,23 @@ public class Nekretnine extends javax.swing.JFrame {
 
         if (jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
 
-            if (!jfc.getSelectedFile().exists() ||
-                    (jfc.getSelectedFile().exists() && 
-                    JOptionPane.showConfirmDialog(rootPane, 
-                        "Datoteka postoji, prepisati?", 
-                        "Datoteka postoji", 
-                        JOptionPane.YES_NO_OPTION, 
-                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)) {
-                    try {
-                        BufferedWriter writer = new BufferedWriter(
-                                new FileWriter(jfc.getSelectedFile(), StandardCharsets.UTF_8));
-                        writer.write(gson.toJson(obrada.getPodaci()));
-                        writer.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+            if (!jfc.getSelectedFile().exists()
+                    || (jfc.getSelectedFile().exists()
+                    && JOptionPane.showConfirmDialog(rootPane,
+                            "Datoteka postoji, prepisati?",
+                            "Datoteka postoji",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)) {
+                try {
+                    BufferedWriter writer = new BufferedWriter(
+                            new FileWriter(jfc.getSelectedFile(), StandardCharsets.UTF_8));
+                    writer.write(gson.toJson(obrada.getPodaci()));
+                    writer.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
-            
-            
-            
         }
     }//GEN-LAST:event_btnExportJsonActionPerformed
 
@@ -572,17 +590,15 @@ public class Nekretnine extends javax.swing.JFrame {
         jfc.setSelectedFile(new File(System.getProperty("user.home") + File.separator + "Eudnova.docx"));
 
         if (jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-              if (!jfc.getSelectedFile().exists() ||
-                    (jfc.getSelectedFile().exists() && 
-                    JOptionPane.showConfirmDialog(rootPane, 
-                        "Datoteka postoji, prepisati?", 
-                        "Datoteka postoji", 
-                        JOptionPane.YES_NO_OPTION, 
-                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)) {
-                  
-                  
-                  
-              }
+            if (!jfc.getSelectedFile().exists()
+                    || (jfc.getSelectedFile().exists()
+                    && JOptionPane.showConfirmDialog(rootPane,
+                            "Datoteka postoji, prepisati?",
+                            "Datoteka postoji",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)) {
+
+            }
     }//GEN-LAST:event_btnExportWordActionPerformed
     }
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
@@ -590,83 +606,83 @@ public class Nekretnine extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void txtUvjetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUvjetKeyReleased
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             ucitajPodatke();
         }
     }//GEN-LAST:event_txtUvjetKeyReleased
 
     private void lblSlika1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlika1MouseClicked
-        if(entitet==null){
-           return;
-       }
+        if (entitet == null) {
+            return;
+        }
         JFileChooser jfc = new JFileChooser();
-        if(jfc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+        if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             try {
-                BufferedImage bi= Imaging.getBufferedImage(jfc.getSelectedFile());
-                File slika = new File("slike" + File.separator + 
-                        "nekretnine" + File.separator + entitet.getId() + "_1.png");
+                BufferedImage bi = Imaging.getBufferedImage(jfc.getSelectedFile());
+                File slika = new File("slike" + File.separator
+                        + "nekretnine" + File.separator + entitet.getId() + "_1.png");
                 ImageFormats format = ImageFormats.PNG;
                 Map<String, Object> param = new HashMap<>();
                 Imaging.writeImage(bi, slika, format, param);
-                
+
                 ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
-            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
-            lblSlika1.setIcon(ii);
-            
+                        .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+                lblSlika1.setIcon(ii);
+
             } catch (Exception e) {
                 e.printStackTrace();
-            }   
+            }
         }
     }//GEN-LAST:event_lblSlika1MouseClicked
 
     private void lblSlika2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlika2MouseClicked
-        if(entitet==null){
-           return;
-       }
+        if (entitet == null) {
+            return;
+        }
         JFileChooser jfc = new JFileChooser();
-        if(jfc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+        if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             try {
-                BufferedImage bi= Imaging.getBufferedImage(jfc.getSelectedFile());
-                File slika = new File("slike" + File.separator + 
-                        "nekretnine" + File.separator + entitet.getId() + "_2.png");
+                BufferedImage bi = Imaging.getBufferedImage(jfc.getSelectedFile());
+                File slika = new File("slike" + File.separator
+                        + "nekretnine" + File.separator + entitet.getId() + "_2.png");
                 ImageFormats format = ImageFormats.PNG;
                 Map<String, Object> param = new HashMap<>();
                 Imaging.writeImage(bi, slika, format, param);
-                
+
                 ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
-            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
-            lblSlika2.setIcon(ii);
-            
+                        .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+                lblSlika2.setIcon(ii);
+
             } catch (Exception e) {
                 e.printStackTrace();
-            }   
+            }
         }
     }//GEN-LAST:event_lblSlika2MouseClicked
 
     private void lblSlika3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlika3MouseClicked
-        if(entitet==null){
-           return;
-       }
+        if (entitet == null) {
+            return;
+        }
         JFileChooser jfc = new JFileChooser();
-        if(jfc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+        if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             try {
-                BufferedImage bi= Imaging.getBufferedImage(jfc.getSelectedFile());
-                File slika = new File("slike" + File.separator + 
-                        "nekretnine" + File.separator + entitet.getId() + "_3.png");
+                BufferedImage bi = Imaging.getBufferedImage(jfc.getSelectedFile());
+                File slika = new File("slike" + File.separator
+                        + "nekretnine" + File.separator + entitet.getId() + "_3.png");
                 ImageFormats format = ImageFormats.PNG;
                 Map<String, Object> param = new HashMap<>();
                 Imaging.writeImage(bi, slika, format, param);
-                
+
                 ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
-            .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
-            lblSlika3.setIcon(ii);
-            
+                        .getScaledInstance(300, 150, Image.SCALE_DEFAULT));
+                lblSlika3.setIcon(ii);
+
             } catch (Exception e) {
                 e.printStackTrace();
-            }   
+            }
         }
     }//GEN-LAST:event_lblSlika3MouseClicked
-           
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -675,7 +691,7 @@ public class Nekretnine extends javax.swing.JFrame {
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JButton btnTrazi;
-    private javax.swing.JCheckBox chbVerificiran;
+    private javax.swing.JCheckBox chbLegaliziran;
     private javax.swing.JComboBox<Lokacija> cmbLokacija;
     private javax.swing.JComboBox<Vlasnik> cmbVlasnik;
     private javax.swing.JComboBox<Vrsta> cmbVrsta;
@@ -714,22 +730,21 @@ public class Nekretnine extends javax.swing.JFrame {
         txtKvadratura.setText("");
         txtOpis.setText("");
         txtCijena.setText("");
-        chbVerificiran.setSelected(false);
+        chbLegaliziran.setSelected(false);
     }
 
     private void postaviVrijednostiUEntitet() {
-        
+
         entitet.setLokacija((Lokacija) cmbLokacija.getSelectedItem());
         entitet.setVlasnik((Vlasnik) cmbVlasnik.getSelectedItem());
         entitet.setVrsta((Vrsta) cmbVrsta.getSelectedItem());
-        
+
         try {
             entitet.setKvadratura(new BigDecimal(txtKvadratura.getText()));
         } catch (Exception e) {
             entitet.setKvadratura(BigDecimal.ZERO);
         }
-        
-        
+
         entitet.setNaziv(txtNaziv.getText());
         entitet.setOpis(txtOpis.getText());
         try {
@@ -737,9 +752,8 @@ public class Nekretnine extends javax.swing.JFrame {
         } catch (Exception e) {
             entitet.setCijena(BigDecimal.ZERO);
         }
-        
 
-        entitet.setLegalizacija(chbVerificiran.isSelected());
+        entitet.setLegalizacija(chbLegaliziran.isSelected());
         obrada.setEntitet(entitet);
     }
 }

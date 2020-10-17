@@ -31,6 +31,7 @@ public class Lokacija extends Entitet {
      @OneToMany(mappedBy = "lokacija")
     private List<Nekretnina> nekretnine = new ArrayList<>();
     public List<Nekretnina> getNekretnine() {
+        
        return nekretnine;
     }
 

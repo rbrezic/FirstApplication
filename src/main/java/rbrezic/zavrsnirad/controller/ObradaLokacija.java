@@ -54,7 +54,7 @@ public class ObradaLokacija extends Obrada<Lokacija> {
             throw new AgencijaException("NEMOGUĆE (Nekretnina posjeduje ovu lokaciju)");
         }
         
-    }
+    }   
 
     private void kontrolaZupanija() throws AgencijaException {
         //if(entitet.getZupanija()==null || entitet.getZupanija().isEmpty() ){
@@ -86,7 +86,10 @@ public class ObradaLokacija extends Obrada<Lokacija> {
         if(i<10000 || i>53296){
             throw  new AgencijaException("Nepravilan poštanski broj");
         }
-      
+       if (!entitet.getPostanskiBroj().matches("[0-9]+")){
+            throw  new AgencijaException("Nepravilan poštanski broj");
+        }
+      // && entitet.getPostanskiBroj().length() > 2
         
     }
 

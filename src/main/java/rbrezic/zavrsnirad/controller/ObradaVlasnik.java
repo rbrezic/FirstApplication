@@ -6,6 +6,7 @@
 package rbrezic.zavrsnirad.controller;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 import rbrezic.zavrsnirad.model.Vlasnik;
 import rbrezic.zavrsnirad.utility.AgencijaException;
@@ -36,6 +37,7 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
     @Override
     protected void kontrolaCreate() throws AgencijaException{
         kontrolaIme();
+        kontrolaPrezime();
         kontrolaOib();
         kontrolaOibBazaKreiraj();
     }
@@ -55,10 +57,24 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
         }
     }
     protected void kontrolaIme() throws AgencijaException{
-        if(entitet.getIme()==null || entitet.getIme().trim().isEmpty()){
-            throw new AgencijaException("Ime obavezno");
+         if(entitet.getIme().isEmpty()){
+            throw new AgencijaException("Ime nije postavljeno, unijeti ime");
+        }
+        boolean broj=false;
+        try {
+            new BigDecimal(entitet.getIme());
+            broj=true;
+        } catch (Exception e) {
+        }
+        if(broj){
+            throw new AgencijaException("Ime ne može biti broj, unijeti ime");
+        }
+        
+        if(entitet.getIme().length()>50){
+            throw new AgencijaException("Dužina imena ne može biti veća od 50 znakova");
         }
     }
+    
     
     private void kontrolaOibBazaKreiraj() throws AgencijaException{
        List<Vlasnik> lista = session.createQuery(""
@@ -94,6 +110,24 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
             throw new AgencijaException("NEMOGUĆE (Vlasnik posjeduje nekretninu)");
         }
         }
+
+    private void kontrolaPrezime() throws AgencijaException {
+        if(entitet.getPrezime().isEmpty()){
+            throw new AgencijaException("Prezime nije postavljeno, unijeti prezime");
+        }
+        boolean broj=false;
+        try {
+            new BigDecimal(entitet.getPrezime());
+            broj=true;
+        } catch (Exception e) {
+        }
+        if(broj){
+            throw new AgencijaException("Prezime ne može biti broj, unijeti prezime");
+        }
+        
+        if(entitet.getPrezime().length()>50){
+            throw new AgencijaException("Dužina prezimena ne može biti veća od 50 znakova");
+        }}
 
 }
 
