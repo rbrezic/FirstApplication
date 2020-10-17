@@ -44,6 +44,7 @@ rbrezic\zavrsnirad\view\Izbornik$2.class
 rbrezic\zavrsnirad\view\Autorizacija.class
 rbrezic\zavrsnirad\view\Nekretnine$10.class
 rbrezic\zavrsnirad\view\Lokacije.class
+rbrezic\zavrsnirad\view\SplashScreen.class
 rbrezic\zavrsnirad\controller\ObradaOperater.class
 rbrezic\zavrsnirad\view\Vrste$4.class
 rbrezic\zavrsnirad\controller\ObradaVrsta.class
@@ -51,6 +52,7 @@ rbrezic\zavrsnirad\view\Nekretnine$4.class
 rbrezic\zavrsnirad\view\Autorizacija$2.class
 rbrezic\zavrsnirad\controller\ObradaVlasnik.class
 rbrezic\zavrsnirad\view\Lokacije$5.class
+rbrezic\zavrsnirad\view\SplashScreen$Ucitanje.class
 rbrezic\zavrsnirad\controller\ObradaOsoba.class
 rbrezic\zavrsnirad\view\Nekretnine$OcistiPoruku.class
 rbrezic\zavrsnirad\view\Lokacije$2.class
