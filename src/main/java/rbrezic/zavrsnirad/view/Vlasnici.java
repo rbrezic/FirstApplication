@@ -6,6 +6,7 @@
 package rbrezic.zavrsnirad.view;
 
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -17,6 +18,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.Imaging;
 import rbrezic.zavrsnirad.controller.ObradaVlasnik;
@@ -289,8 +291,8 @@ public class Vlasnici extends javax.swing.JFrame {
             obrada.create();
             ucitajPodatke();
             ocistiPolja();
-        } catch (AgencijaException ex) {
-            lblPoruka.setText(ex.getPoruka());
+        } catch (AgencijaException e) {
+            postaviPoruku(e);
         }
 
     }//GEN-LAST:event_btnDodajActionPerformed
@@ -308,7 +310,7 @@ public class Vlasnici extends javax.swing.JFrame {
             ocistiPolja();
 
         } catch (AgencijaException e) {
-            lblPoruka.setText(e.getPoruka());
+            postaviPoruku(e);
         }
 
     }//GEN-LAST:event_btnPromjeniActionPerformed
@@ -326,10 +328,39 @@ public class Vlasnici extends javax.swing.JFrame {
             ucitajPodatke();
             ocistiPolja();
         } catch (AgencijaException e) {
-            lblPoruka.setText(e.getPoruka());
+            postaviPoruku(e);
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
+    private void postaviPoruku(AgencijaException e) {
 
+        switch (e.getKomponenta()) {
+            case "ime":
+                txtIme.setBorder(new LineBorder(Color.RED, 2, true));
+                txtIme.requestFocus();
+                break;
+            case "prezime":
+                txtPrezime.setBorder(new LineBorder(Color.RED, 2, true));
+                txtPrezime.requestFocus();
+                break;
+        }
+
+        lblPoruka.setText(e.getPoruka());
+        OcistiPoruku op = new OcistiPoruku();
+        op.start();
+    }
+
+    private class OcistiPoruku extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(3 * 1000);
+            } catch (InterruptedException ex) {
+            }
+            lblPoruka.setText("");
+        }
+
+    }
     private void txtUvjetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUvjetKeyReleased
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             ucitajPodatke();
