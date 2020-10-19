@@ -535,13 +535,13 @@ public class Nekretnine extends javax.swing.JFrame {
         ExclusionStrategy strategy = new ExclusionStrategy() {
             @Override
             public boolean shouldSkipField(FieldAttributes field) {
-                if (field.getDeclaringClass() == Lokacije.class && field.getName().equals("nekretnine")) {
+                if (field.getDeclaringClass() == Lokacija.class && field.getName().equals("nekretnine")) {
                     return true;
                 }
-                if (field.getDeclaringClass() == Vlasnici.class && field.getName().equals("nekretnine")) {
+                if (field.getDeclaringClass() == Vlasnik.class && field.getName().equals("nekretnine")) {
                     return true;
                 }
-                if (field.getDeclaringClass() == Vrste.class && field.getName().equals("nekretnine")) {
+                if (field.getDeclaringClass() == Vrsta.class && field.getName().equals("nekretnine")) {
                     return true;
                 }
                 return false;
