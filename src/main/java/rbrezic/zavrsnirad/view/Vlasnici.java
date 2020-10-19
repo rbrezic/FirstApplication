@@ -260,6 +260,7 @@ public class Vlasnici extends javax.swing.JFrame {
         if (entitet == null) {
             return;
         }
+        jComboBox1.setSelectedItem(entitet.getSpol());
         txtIme.setText(entitet.getIme());
         txtPrezime.setText(entitet.getPrezime());
         txtOib.setText(entitet.getOib());
@@ -441,6 +442,7 @@ public class Vlasnici extends javax.swing.JFrame {
         entitet.setPrezime(txtPrezime.getText());
         entitet.setOib(txtOib.getText());
         entitet.setKontakt(txtKontakt.getText());
+        entitet.setSpol(jComboBox1.getSelectedItem().toString());
         obrada.setEntitet(entitet);
     }
 }
