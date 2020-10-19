@@ -72,9 +72,7 @@ public class ObradaNekretnina extends Obrada<Nekretnina> {
         }
      }
     private void kontrolaNaziv() throws AgencijaException { 
-        if(entitet.getNaziv().isEmpty()){
-            throw new AgencijaException("Naziv nije postavljen, unijeti naziv");
-        }
+        kontrolaNull(entitet.getNaziv(), "Naziv nije definiran");
         boolean broj=false;
         try {
             new BigDecimal(entitet.getNaziv());

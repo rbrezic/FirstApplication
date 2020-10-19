@@ -242,6 +242,7 @@ public class Lokacije extends javax.swing.JFrame {
 
         // potencijalno bolje rješenje je korištenje Reflection API
         //https://docs.oracle.com/javase/tutorial/reflect/index.html
+        jComboBox2.setSelectedItem(entitet.getZupanija());
         txtNaziv.setText(entitet.getNazivMjesta());
         txtUlica.setText(entitet.getUlica());
         txtBrojKuce.setText(entitet.getBrojKuce());
@@ -387,6 +388,7 @@ public class Lokacije extends javax.swing.JFrame {
         entitet.setPostanskiBroj(txtPostanskiBroj.getText());
         entitet.setUlica(txtUlica.getText());
         entitet.setBrojKuce(txtBrojKuce.getText());
+        entitet.setZupanija(jComboBox2.getSelectedItem().toString());
         obrada.setEntitet(entitet);
     }
 }
