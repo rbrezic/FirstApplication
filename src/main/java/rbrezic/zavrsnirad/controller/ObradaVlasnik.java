@@ -46,6 +46,10 @@ public class ObradaVlasnik extends ObradaOsoba<Vlasnik>  {
     @Override
     protected void kontrolaUpdate() throws AgencijaException{
         super.kontrolaUpdate();
+        kontrolaIme();
+        kontrolaPrezime();
+        kontrolaOibBazaPromjeni();
+        kontrolaOib();
     }
     
     protected void kontrolaOib() throws AgencijaException{
