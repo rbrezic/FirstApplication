@@ -116,7 +116,6 @@ public class Nekretnine extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstPodaci = new javax.swing.JList<>();
         btnExportJson = new javax.swing.JButton();
-        btnExportWord = new javax.swing.JButton();
         btnTrazi = new javax.swing.JButton();
         txtUvjet = new javax.swing.JTextField();
 
@@ -298,13 +297,6 @@ public class Nekretnine extends javax.swing.JFrame {
             }
         });
 
-        btnExportWord.setText("WORD");
-        btnExportWord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportWordActionPerformed(evt);
-            }
-        });
-
         btnTrazi.setText("T");
         btnTrazi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,9 +331,7 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnExportJson)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnExportWord))
+                        .addComponent(btnExportJson))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -363,8 +353,7 @@ public class Nekretnine extends javax.swing.JFrame {
                         .addComponent(btnDodaj)
                         .addComponent(btnPromjeni)
                         .addComponent(btnObrisi))
-                    .addComponent(btnExportJson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExportWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnExportJson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -583,24 +572,7 @@ public class Nekretnine extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnExportJsonActionPerformed
-
-    private void btnExportWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportWordActionPerformed
-        JFileChooser jfc = new JFileChooser();
-        jfc.setCurrentDirectory(new File(System.getProperty("user.home")));
-        jfc.setSelectedFile(new File(System.getProperty("user.home") + File.separator + "Eudnova.docx"));
-
-        if (jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-            if (!jfc.getSelectedFile().exists()
-                    || (jfc.getSelectedFile().exists()
-                    && JOptionPane.showConfirmDialog(rootPane,
-                            "Datoteka postoji, prepisati?",
-                            "Datoteka postoji",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)) {
-
-            }
-    }//GEN-LAST:event_btnExportWordActionPerformed
-    }
+    
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
         ucitajPodatke();
     }//GEN-LAST:event_btnTraziActionPerformed
@@ -687,7 +659,6 @@ public class Nekretnine extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnExportJson;
-    private javax.swing.JButton btnExportWord;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JButton btnTrazi;

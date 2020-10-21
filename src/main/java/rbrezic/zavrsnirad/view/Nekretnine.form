@@ -43,8 +43,6 @@
                       <Component id="btnObrisi" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnExportJson" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnExportWord" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -75,7 +73,6 @@
                       <Component id="btnObrisi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnExportJson" max="32767" attributes="0"/>
-                  <Component id="btnExportWord" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -387,14 +384,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportJsonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnExportWord">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="WORD"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportWordActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTrazi">
