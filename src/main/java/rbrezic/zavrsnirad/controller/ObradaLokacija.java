@@ -114,6 +114,15 @@ public class ObradaLokacija extends Obrada<Lokacija> {
         if(entitet.getUlica()==null || entitet.getUlica().isEmpty() ){
           throw  new AgencijaException("Unos ulice obavezan");
         }
+        boolean broj=false;
+        try {
+            new BigDecimal(entitet.getUlica());
+            broj=true;
+        } catch (Exception e) {
+        }
+        if(broj){
+            throw new AgencijaException("Ulica ne može biti broj, unijeti ulicu");
+        }
        
     }
 
