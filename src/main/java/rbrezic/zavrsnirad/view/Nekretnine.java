@@ -290,7 +290,7 @@ public class Nekretnine extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lstPodaci);
 
-        btnExportJson.setText("JSON");
+        btnExportJson.setText("ISPIS");
         btnExportJson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportJsonActionPerformed(evt);

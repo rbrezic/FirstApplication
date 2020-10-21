@@ -23,24 +23,23 @@ public abstract class ObradaOsoba<T extends Osoba> extends Obrada<T> {
      */
     @Override
     protected void kontrolaCreate() throws AgencijaException {
-     kontrolaPrezime();
+     
     
     }
 
   
     @Override
     protected void kontrolaUpdate() throws AgencijaException {
-        kontrolaPrezime();
+        
       }
 
    
 
     private void kontrolaPrezime() throws AgencijaException {
-       if(entitet.getIme()==null || entitet.getIme().trim().isEmpty()){
-         throw new AgencijaException("Prezime obavezno");
+      
      } }
     
     
     
     
-}
+
